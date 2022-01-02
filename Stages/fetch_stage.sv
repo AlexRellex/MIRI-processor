@@ -31,6 +31,8 @@ module fetch_stage(
     );
 
     // TODO: create instruction cache
+    // TODO: add memory access
+    // TODO: add TLB access
 
     always @ (posedge clk) begin
 
