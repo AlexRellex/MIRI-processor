@@ -1,0 +1,245 @@
+# do test_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim LE vmap 10.3d Lib Mapping Utility 2014.10 Oct  7 2014
+# vmap -modelsim_quiet work rtl_work 
+# Copying /home/mvidal/opt/altera/15.0/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied /home/mvidal/opt/altera/15.0/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vcom -93 -work work {/home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/unidad_control.vhd}
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 10:25:05 on Oct 26,2015
+# vcom -reportprogress 300 -93 -work work /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/unidad_control.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity unidad_control
+# -- Compiling architecture Structure of unidad_control
+# End time: 10:25:06 on Oct 26,2015, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/SRAMController.vhd}
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 10:25:06 on Oct 26,2015
+# vcom -reportprogress 300 -93 -work work /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/SRAMController.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity SRAMController
+# -- Compiling architecture comportament of SRAMController
+# End time: 10:25:06 on Oct 26,2015, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/sisa.vhd}
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 10:25:06 on Oct 26,2015
+# vcom -reportprogress 300 -93 -work work /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/sisa.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity sisa
+# -- Compiling architecture Structure of sisa
+# End time: 10:25:06 on Oct 26,2015, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/rellotge.vhd}
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 10:25:06 on Oct 26,2015
+# vcom -reportprogress 300 -93 -work work /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/rellotge.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package NUMERIC_STD
+# -- Compiling entity rellotge
+# -- Compiling architecture Structure of rellotge
+# End time: 10:25:06 on Oct 26,2015, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/regfile.vhd}
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 10:25:06 on Oct 26,2015
+# vcom -reportprogress 300 -93 -work work /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/regfile.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity regfile
+# -- Compiling architecture Structure of regfile
+# End time: 10:25:06 on Oct 26,2015, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/proc.vhd}
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 10:25:06 on Oct 26,2015
+# vcom -reportprogress 300 -93 -work work /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/proc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity proc
+# -- Compiling architecture Structure of proc
+# End time: 10:25:06 on Oct 26,2015, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/multi.vhd}
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 10:25:06 on Oct 26,2015
+# vcom -reportprogress 300 -93 -work work /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/multi.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity multi
+# -- Compiling architecture Structure of multi
+# End time: 10:25:06 on Oct 26,2015, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/MemoryController.vhd}
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 10:25:06 on Oct 26,2015
+# vcom -reportprogress 300 -93 -work work /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/MemoryController.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity MemoryController
+# -- Compiling architecture comportament of MemoryController
+# End time: 10:25:06 on Oct 26,2015, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/driver4Displays.vhd}
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 10:25:06 on Oct 26,2015
+# vcom -reportprogress 300 -93 -work work /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/driver4Displays.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity driver4Displays
+# -- Compiling architecture Structure of driver4Displays
+# End time: 10:25:06 on Oct 26,2015, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/display7Segments.vhd}
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 10:25:06 on Oct 26,2015
+# vcom -reportprogress 300 -93 -work work /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/display7Segments.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity display7Segments
+# -- Compiling architecture Structure of display7Segments
+# ** Warning: /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/display7Segments.vhd(12): (vcom-1186) Array type selected signal assignment expression must be of a locally static subtype.
+# End time: 10:25:06 on Oct 26,2015, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# vcom -93 -work work {/home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/datapath.vhd}
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 10:25:06 on Oct 26,2015
+# vcom -reportprogress 300 -93 -work work /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/datapath.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity datapath
+# -- Compiling architecture Structure of datapath
+# End time: 10:25:06 on Oct 26,2015, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/controladors_IO.vhd}
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 10:25:06 on Oct 26,2015
+# vcom -reportprogress 300 -93 -work work /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/controladors_IO.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity controladors_IO
+# -- Compiling architecture Structure of controladors_IO
+# End time: 10:25:06 on Oct 26,2015, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/control_l.vhd}
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 10:25:06 on Oct 26,2015
+# vcom -reportprogress 300 -93 -work work /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/control_l.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity control_l
+# -- Compiling architecture Structure of control_l
+# End time: 10:25:06 on Oct 26,2015, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/alu.vhd}
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 10:25:06 on Oct 26,2015
+# vcom -reportprogress 300 -93 -work work /home/mvidal/Dropbox/Labs/PA/git_workspace/project_sword/PEC_CPU/alu.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity alu
+# -- Compiling architecture Structure of alu
+# End time: 10:25:06 on Oct 26,2015, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# 
+# stdin: <EOF>
+dataset reload -f
+# Dataset not found: 
+vsim work.rellotge(structure)
+# vsim -i -l msim_transcript -do "test_run_msim_rtl_vhdl.do" 
+# Start time: 10:25:29 on Oct 26,2015
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading ieee.numeric_std(body)
+# Loading work.rellotge(structure)
+vsim work.rellotge(structure)
+# vsim 
+# Start time: 10:25:31 on Oct 26,2015
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading ieee.numeric_std(body)
+# Loading work.rellotge(structure)
+add wave -position insertpoint  \
+sim:/rellotge/CLOCK
+vsim work.sisa(structure)
+# vsim 
+# Start time: 10:26:43 on Oct 26,2015
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.sisa(structure)
+# Loading ieee.numeric_std(body)
+# Loading work.rellotge(structure)
+# Loading work.controladors_io(structure)
+# Loading work.memorycontroller(comportament)
+# Loading work.sramcontroller(comportament)
+# Loading work.proc(structure)
+# Loading work.unidad_control(structure)
+# Loading work.control_l(structure)
+# Loading work.multi(structure)
+# Loading work.datapath(structure)
+# Loading work.alu(structure)
+# Loading work.regfile(structure)
+# Loading work.driver4displays(structure)
+# Loading work.display7segments(structure)
+# Load canceled
+# End time: 10:27:27 on Oct 26,2015, Elapsed time: 0:00:44
+# Errors: 1, Warnings: 0

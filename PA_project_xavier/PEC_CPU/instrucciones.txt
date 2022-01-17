@@ -1,0 +1,76 @@
+A continuació detallarem totes les instruccions que hem implementat, que bàsicament són totes
+les que es demanaven. No s'especifica quines van i quines no, perquè amb els jocs de proves
+que tenim funcionen totes.
+
+-AND
+-OR
+-XOR
+-NOT
+-ADD
+-SUB
+-SHA
+-SHL
+-CMPLT
+-CMPLE
+-CMPEQ
+-CMPLTU
+-CMPLEU
+-ADDI
+-LD
+-ST
+-MOVI
+-MOVHI
+-BZ
+-BNZ
+-IN
+-OUT
+-MUL
+-MULH
+-MULHU
+-DIV
+-DIVU
+-JZ
+-JNZ
+-JMP
+-JAL
+-LDB
+-STB
+-HALT
+
+En el projecte hi ha tots els jocs de prova, tant els .s com els .hex.
+Els jocs de proves que es donaven a la documentació, són els següents:
+
+-load&store.hex		[prova els accessos a memòria] (és l'únic que no conté el .s)
+-comparacions.hex	[prova les comaracions]
+-sumaimm.hex		[prova les sumes immediates]
+-inst-logiques.hex	[prova les instruccions lògiques]
+-suma.hex			[prova les sumes]
+-resta.hex			[prova les restes]
+-shifts.hex			[prova els desplaçaments]
+-mul.hex			[prova les multiplicacions]
+-div.hex			[prova les divisions]
+-mul-div.hex		[prova les multiplicacions i les divisions]
+-branch.hex			[prova els salts relatius]
+-jump.hex			[prova els salts absoluts]
+-inout.hex			[prova les instruccions in/out]
+
+Els que hem fet nosaltres són els següents. També s'especifica què fan i quin hauria de ser el
+resultat final.
+
+-branch-enrere.hex	[prova els salts relatius enrere]
+
+	Resultat final memòria:
+
+	Mem[01:00] = 0001
+	Mem[03:02] = 0002
+	Mem[05:04] = 0003
+	Mem[07:06] = 0004
+
+-sw-key-hex.hex		[prova tots els dispositius d'entrada/sortida]
+
+	Resultat final:
+
+	- Carrega en els leds verds els valors dels KEY
+	- Carrega en els displays els valors dels SWITCH
+	- Activa tots els displays excepte l'HEX2
+

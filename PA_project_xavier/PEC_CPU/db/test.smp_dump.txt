@@ -1,0 +1,6 @@
+
+State Machine - |sisa|MemoryController:mem0|SRAMController:sram|estat
+Name estat.ESC2 estat.ESC1 estat.LECTURA 
+estat.LECTURA 0 0 0 
+estat.ESC1 0 1 1 
+estat.ESC2 1 0 1 

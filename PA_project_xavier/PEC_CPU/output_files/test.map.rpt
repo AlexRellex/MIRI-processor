@@ -1,0 +1,974 @@
+Analysis & Synthesis report for test
+Mon Oct 19 17:19:11 2015
+Quartus II 64-Bit Version 15.0.2 Build 153 07/15/2015 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. State Machine - |sisa|MemoryController:mem0|SRAMController:sram|estat
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: rellotge:Rlltge
+ 14. Parameter Settings for Inferred Entity Instance: proc:pro0|datapath:e0|alu:alu0|lpm_mult:Mult0
+ 15. Parameter Settings for Inferred Entity Instance: proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div0
+ 16. Parameter Settings for Inferred Entity Instance: proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div1
+ 17. Parameter Settings for Inferred Entity Instance: proc:pro0|datapath:e0|alu:alu0|lpm_mult:Mult1
+ 18. lpm_mult Parameter Settings by Entity Instance
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Mon Oct 19 17:19:11 2015      ;
+; Quartus II 64-Bit Version          ; 15.0.2 Build 153 07/15/2015 SJ Web Edition ;
+; Revision Name                      ; test                                       ;
+; Top-level Entity Name              ; sisa                                       ;
+; Family                             ; Cyclone IV E                               ;
+; Total logic elements               ; 8,888                                      ;
+;     Total combinational functions  ; 4,727                                      ;
+;     Dedicated logic registers      ; 4,265                                      ;
+; Total registers                    ; 4265                                       ;
+; Total pins                         ; 100                                        ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 0                                          ;
+; Embedded Multiplier 9-bit elements ; 4                                          ;
+; Total PLLs                         ; 0                                          ;
++------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                                      ; sisa               ; test               ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                               ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                           ; Library ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------+---------+
+; unidad_control.vhd               ; yes             ; User VHDL File               ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/unidad_control.vhd         ;         ;
+; SRAMController.vhd               ; yes             ; User VHDL File               ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/SRAMController.vhd         ;         ;
+; sisa.vhd                         ; yes             ; User VHDL File               ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/sisa.vhd                   ;         ;
+; rellotge.vhd                     ; yes             ; User VHDL File               ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/rellotge.vhd               ;         ;
+; regfile.vhd                      ; yes             ; User VHDL File               ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/regfile.vhd                ;         ;
+; proc.vhd                         ; yes             ; User VHDL File               ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/proc.vhd                   ;         ;
+; multi.vhd                        ; yes             ; User VHDL File               ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/multi.vhd                  ;         ;
+; MemoryController.vhd             ; yes             ; User VHDL File               ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/MemoryController.vhd       ;         ;
+; driver4Displays.vhd              ; yes             ; User VHDL File               ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/driver4Displays.vhd        ;         ;
+; display7Segments.vhd             ; yes             ; User VHDL File               ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/display7Segments.vhd       ;         ;
+; datapath.vhd                     ; yes             ; User VHDL File               ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/datapath.vhd               ;         ;
+; controladors_IO.vhd              ; yes             ; User VHDL File               ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/controladors_IO.vhd        ;         ;
+; control_l.vhd                    ; yes             ; User VHDL File               ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/control_l.vhd              ;         ;
+; alu.vhd                          ; yes             ; User VHDL File               ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/alu.vhd                    ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; /home/mvidal/opt/altera/15.0/quartus/libraries/megafunctions/lpm_mult.tdf              ;         ;
+; aglobal150.inc                   ; yes             ; Megafunction                 ; /home/mvidal/opt/altera/15.0/quartus/libraries/megafunctions/aglobal150.inc            ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; /home/mvidal/opt/altera/15.0/quartus/libraries/megafunctions/lpm_add_sub.inc           ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; /home/mvidal/opt/altera/15.0/quartus/libraries/megafunctions/multcore.inc              ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; /home/mvidal/opt/altera/15.0/quartus/libraries/megafunctions/bypassff.inc              ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; /home/mvidal/opt/altera/15.0/quartus/libraries/megafunctions/altshift.inc              ;         ;
+; db/mult_36t.tdf                  ; yes             ; Auto-Generated Megafunction  ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/db/mult_36t.tdf            ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; /home/mvidal/opt/altera/15.0/quartus/libraries/megafunctions/lpm_divide.tdf            ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; /home/mvidal/opt/altera/15.0/quartus/libraries/megafunctions/abs_divider.inc           ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; /home/mvidal/opt/altera/15.0/quartus/libraries/megafunctions/sign_div_unsign.inc       ;         ;
+; db/lpm_divide_d2p.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/db/lpm_divide_d2p.tdf      ;         ;
+; db/abs_divider_8dg.tdf           ; yes             ; Auto-Generated Megafunction  ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/db/abs_divider_8dg.tdf     ;         ;
+; db/alt_u_div_eaf.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/db/alt_u_div_eaf.tdf       ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/db/add_sub_7pc.tdf         ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/db/add_sub_8pc.tdf         ;         ;
+; db/lpm_abs_k0a.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/db/lpm_abs_k0a.tdf         ;         ;
+; db/lpm_divide_lkm.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/db/lpm_divide_lkm.tdf      ;         ;
+; db/sign_div_unsign_dnh.tdf       ; yes             ; Auto-Generated Megafunction  ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/db/sign_div_unsign_dnh.tdf ;         ;
+; db/mult_7dt.tdf                  ; yes             ; Auto-Generated Megafunction  ; /home/mvidal/workspaces/git_workspace/project_sword/PEC_CPU/db/mult_7dt.tdf            ;         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimated Total logic elements              ; 8,888          ;
+;                                             ;                ;
+; Total combinational functions               ; 4727           ;
+; Logic element usage by number of LUT inputs ;                ;
+;     -- 4 input functions                    ; 3910           ;
+;     -- 3 input functions                    ; 690            ;
+;     -- <=2 input functions                  ; 127            ;
+;                                             ;                ;
+; Logic elements by mode                      ;                ;
+;     -- normal mode                          ; 4312           ;
+;     -- arithmetic mode                      ; 415            ;
+;                                             ;                ;
+; Total registers                             ; 4265           ;
+;     -- Dedicated logic registers            ; 4265           ;
+;     -- I/O registers                        ; 0              ;
+;                                             ;                ;
+; I/O pins                                    ; 100            ;
+;                                             ;                ;
+; Embedded Multiplier 9-bit elements          ; 4              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 4104           ;
+; Total fan-out                               ; 30989          ;
+; Average fan-out                             ; 3.36           ;
++---------------------------------------------+----------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                     ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                        ; Library Name ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; |sisa                                           ; 4727 (0)          ; 4265 (0)     ; 0           ; 4            ; 0       ; 2         ; 100  ; 0            ; |sisa                                                                                                                                                      ; work         ;
+;    |MemoryController:mem0|                      ; 37 (1)            ; 4 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|MemoryController:mem0                                                                                                                                ; work         ;
+;       |SRAMController:sram|                     ; 36 (36)           ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|MemoryController:mem0|SRAMController:sram                                                                                                            ; work         ;
+;    |controladors_IO:ctl_io|                     ; 340 (340)         ; 4096 (4096)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|controladors_IO:ctl_io                                                                                                                               ; work         ;
+;    |driver4Displays:dsplay|                     ; 56 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|driver4Displays:dsplay                                                                                                                               ; work         ;
+;       |display7Segments:Visor0|                 ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|driver4Displays:dsplay|display7Segments:Visor0                                                                                                       ; work         ;
+;       |display7Segments:Visor1|                 ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|driver4Displays:dsplay|display7Segments:Visor1                                                                                                       ; work         ;
+;       |display7Segments:Visor2|                 ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|driver4Displays:dsplay|display7Segments:Visor2                                                                                                       ; work         ;
+;       |display7Segments:Visor3|                 ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|driver4Displays:dsplay|display7Segments:Visor3                                                                                                       ; work         ;
+;    |proc:pro0|                                  ; 4290 (0)          ; 161 (0)      ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |sisa|proc:pro0                                                                                                                                            ; work         ;
+;       |datapath:e0|                             ; 4198 (2805)       ; 128 (0)      ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0                                                                                                                                ; work         ;
+;          |alu:alu0|                             ; 1225 (585)        ; 0 (0)        ; 0           ; 4            ; 0       ; 2         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0                                                                                                                       ; work         ;
+;             |lpm_divide:Div0|                   ; 353 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div0                                                                                                       ; work         ;
+;                |lpm_divide_d2p:auto_generated|  ; 353 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div0|lpm_divide_d2p:auto_generated                                                                         ; work         ;
+;                   |abs_divider_8dg:divider|     ; 353 (22)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div0|lpm_divide_d2p:auto_generated|abs_divider_8dg:divider                                                 ; work         ;
+;                      |alt_u_div_eaf:divider|    ; 284 (281)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div0|lpm_divide_d2p:auto_generated|abs_divider_8dg:divider|alt_u_div_eaf:divider                           ; work         ;
+;                         |add_sub_7pc:add_sub_0| ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div0|lpm_divide_d2p:auto_generated|abs_divider_8dg:divider|alt_u_div_eaf:divider|add_sub_7pc:add_sub_0     ; work         ;
+;                         |add_sub_8pc:add_sub_1| ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div0|lpm_divide_d2p:auto_generated|abs_divider_8dg:divider|alt_u_div_eaf:divider|add_sub_8pc:add_sub_1     ; work         ;
+;                      |lpm_abs_k0a:my_abs_den|   ; 26 (26)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div0|lpm_divide_d2p:auto_generated|abs_divider_8dg:divider|lpm_abs_k0a:my_abs_den                          ; work         ;
+;                      |lpm_abs_k0a:my_abs_num|   ; 21 (21)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div0|lpm_divide_d2p:auto_generated|abs_divider_8dg:divider|lpm_abs_k0a:my_abs_num                          ; work         ;
+;             |lpm_divide:Div1|                   ; 287 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div1                                                                                                       ; work         ;
+;                |lpm_divide_lkm:auto_generated|  ; 287 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div1|lpm_divide_lkm:auto_generated                                                                         ; work         ;
+;                   |sign_div_unsign_dnh:divider| ; 287 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div1|lpm_divide_lkm:auto_generated|sign_div_unsign_dnh:divider                                             ; work         ;
+;                      |alt_u_div_eaf:divider|    ; 287 (286)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div1|lpm_divide_lkm:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_eaf:divider                       ; work         ;
+;                         |add_sub_8pc:add_sub_1| ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div1|lpm_divide_lkm:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_eaf:divider|add_sub_8pc:add_sub_1 ; work         ;
+;             |lpm_mult:Mult0|                    ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_mult:Mult0                                                                                                        ; work         ;
+;                |mult_36t:auto_generated|        ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_mult:Mult0|mult_36t:auto_generated                                                                                ; work         ;
+;             |lpm_mult:Mult1|                    ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_mult:Mult1                                                                                                        ; work         ;
+;                |mult_7dt:auto_generated|        ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|alu:alu0|lpm_mult:Mult1|mult_7dt:auto_generated                                                                                ; work         ;
+;          |regfile:reg0|                         ; 168 (168)         ; 128 (128)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|datapath:e0|regfile:reg0                                                                                                                   ; work         ;
+;       |unidad_control:c0|                       ; 92 (59)           ; 33 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|unidad_control:c0                                                                                                                          ; work         ;
+;          |control_l:c0|                         ; 29 (29)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|unidad_control:c0|control_l:c0                                                                                                             ; work         ;
+;          |multi:m0|                             ; 4 (4)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|proc:pro0|unidad_control:c0|multi:m0                                                                                                                 ; work         ;
+;    |rellotge:Rlltge|                            ; 4 (4)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sisa|rellotge:Rlltge                                                                                                                                      ; work         ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 0           ;
+; Simple Multipliers (18-bit)           ; 2           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 4           ;
+; Signed Embedded Multipliers           ; 1           ;
+; Unsigned Embedded Multipliers         ; 1           ;
+; Mixed Sign Embedded Multipliers       ; 0           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------+
+; State Machine - |sisa|MemoryController:mem0|SRAMController:sram|estat ;
++---------------+------------+------------+-----------------------------+
+; Name          ; estat.ESC2 ; estat.ESC1 ; estat.LECTURA               ;
++---------------+------------+------------+-----------------------------+
+; estat.LECTURA ; 0          ; 0          ; 0                           ;
+; estat.ESC1    ; 0          ; 1          ; 1                           ;
+; estat.ESC2    ; 1          ; 0          ; 1                           ;
++---------------+------------+------------+-----------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 4265  ;
+; Number of registers using Synchronous Clear  ; 26    ;
+; Number of registers using Synchronous Load   ; 15    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 4223  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------+
+; Inverted Register Statistics                                     ;
++--------------------------------------------------------+---------+
+; Inverted Register                                      ; Fan out ;
++--------------------------------------------------------+---------+
+; MemoryController:mem0|SRAMController:sram|data_written ; 4       ;
+; rellotge:Rlltge|comptador[0]                           ; 4       ;
+; rellotge:Rlltge|comptador[1]                           ; 3       ;
+; rellotge:Rlltge|comptador[2]                           ; 2       ;
+; Total number of inverted registers = 4                 ;         ;
++--------------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |sisa|proc:pro0|unidad_control:c0|bus_ir[7]                    ;
+; 6:1                ; 15 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |sisa|proc:pro0|unidad_control:c0|new_pc[10]                   ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[255][11]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[254][9]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[253][6]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[252][0]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[251][11]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[250][12]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[249][14]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[248][1]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[247][3]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[246][1]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[245][11]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[244][2]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[243][15]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[242][15]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[241][4]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[240][8]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[239][14]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[238][5]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[237][15]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[236][1]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[235][9]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[234][10]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[233][3]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[232][10]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[231][5]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[230][14]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[229][12]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[228][6]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[227][9]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[226][4]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[225][10]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[224][1]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[223][9]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[222][12]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[221][5]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[220][5]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[219][7]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[218][2]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[217][14]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[216][14]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[215][1]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[214][1]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[213][3]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[212][2]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[211][3]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[210][8]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[209][13]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[208][10]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[207][8]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[206][2]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[205][12]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[204][9]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[203][13]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[202][11]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[201][3]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[200][4]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[199][15]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[198][7]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[197][12]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[196][0]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[195][7]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[194][4]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[193][5]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[192][6]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[191][0]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[190][10]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[189][6]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[188][13]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[187][9]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[186][11]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[185][6]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[184][12]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[183][4]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[182][8]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[181][1]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[180][14]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[179][1]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[178][5]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[177][0]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[176][11]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[175][12]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[174][0]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[173][9]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[172][6]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[171][5]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[170][7]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[169][7]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[168][13]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[167][2]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[166][13]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[165][0]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[164][9]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[163][11]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[162][8]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[161][13]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[160][3]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[159][10]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[158][8]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[157][0]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[156][4]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[155][10]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[154][9]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[153][8]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[152][3]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[151][11]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[150][1]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[149][4]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[148][13]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[147][5]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[146][12]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[145][0]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[144][5]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[143][3]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[142][1]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[141][14]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[140][6]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[139][8]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[138][7]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[137][13]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[136][10]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[135][1]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[134][2]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[133][7]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[132][5]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[131][5]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[130][3]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[129][8]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[128][12]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[127][6]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[126][14]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[125][15]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[124][3]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[123][8]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[122][6]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[121][13]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[120][3]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[119][11]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[118][8]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[117][3]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[116][5]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[115][1]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[114][2]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[113][13]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[112][12]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[111][12]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[110][2]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[109][13]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[108][12]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[107][9]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[106][13]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[105][10]                    ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[104][1]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[103][0]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[102][3]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[101][7]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[100][1]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[99][9]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[98][4]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[97][0]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[96][0]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[95][15]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[94][3]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[93][4]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[92][6]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[91][5]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[90][5]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[89][12]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[88][15]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[87][9]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[86][5]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[85][5]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[84][10]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[83][13]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[82][2]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[81][3]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[80][5]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[79][13]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[78][15]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[77][2]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[76][7]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[75][6]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[74][8]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[73][3]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[72][13]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[71][13]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[70][4]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[69][3]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[68][7]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[67][6]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[66][14]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[65][2]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[64][9]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[63][4]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[62][12]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[61][1]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[60][4]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[59][5]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[58][3]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[57][13]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[56][8]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[55][3]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[54][0]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[53][2]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[52][13]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[51][5]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[50][1]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[49][14]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[48][6]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[47][7]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[46][2]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[45][15]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[44][9]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[43][14]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[42][14]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[41][8]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[40][2]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[39][4]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[38][5]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[37][2]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[36][12]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[35][0]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[34][14]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[33][11]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[32][0]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[31][1]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[30][7]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[29][5]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[28][0]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[27][5]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[26][10]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[25][6]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[24][8]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[23][15]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[22][13]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[21][7]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[20][7]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[19][14]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[18][8]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[17][15]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[16][8]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[15][0]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[14][10]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[13][11]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[12][9]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[11][10]                     ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[10][7]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[9][14]                      ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[8][12]                      ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |sisa|controladors_IO:ctl_io|ports[8][6]                       ;
+; 5:1                ; 12 bits   ; 36 LEs        ; 12 LEs               ; 24 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[7][6]                       ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |sisa|controladors_IO:ctl_io|ports[7][1]                       ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[6][8]                       ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[5][12]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[4][13]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[3][5]                       ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[2][12]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[1][15]                      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |sisa|controladors_IO:ctl_io|ports[0][0]                       ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |sisa|proc:pro0|unidad_control:c0|control_l:c0|f[2]            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |sisa|proc:pro0|unidad_control:c0|control_l:c0|in_d[0]         ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |sisa|proc:pro0|datapath:e0|bus_y[6]                           ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |sisa|MemoryController:mem0|SRAMController:sram|dataReaded[10] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |sisa|MemoryController:mem0|SRAMController:sram|estat          ;
+; 259:1              ; 16 bits   ; 2752 LEs      ; 2752 LEs             ; 0 LEs                  ; No         ; |sisa|proc:pro0|datapath:e0|bus_wr[10]                         ;
+; 40:1               ; 15 bits   ; 390 LEs       ; 75 LEs               ; 315 LEs                ; No         ; |sisa|proc:pro0|datapath:e0|alu:alu0|bus_w                     ;
+; 19:1               ; 3 bits    ; 36 LEs        ; 33 LEs               ; 3 LEs                  ; No         ; |sisa|proc:pro0|datapath:e0|alu:alu0|w[4]                      ;
+; 20:1               ; 3 bits    ; 39 LEs        ; 33 LEs               ; 6 LEs                  ; No         ; |sisa|proc:pro0|datapath:e0|alu:alu0|w[11]                     ;
+; 20:1               ; 2 bits    ; 26 LEs        ; 24 LEs               ; 2 LEs                  ; No         ; |sisa|proc:pro0|datapath:e0|alu:alu0|w[2]                      ;
+; 21:1               ; 2 bits    ; 28 LEs        ; 24 LEs               ; 4 LEs                  ; No         ; |sisa|proc:pro0|datapath:e0|alu:alu0|w[13]                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
+
+
++--------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: rellotge:Rlltge ;
++----------------+-------+-------------------------------------+
+; Parameter Name ; Value ; Type                                ;
++----------------+-------+-------------------------------------+
+; mida           ; 3     ; Signed Integer                      ;
+; valor_inicial  ; 7     ; Signed Integer                      ;
++----------------+-------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: proc:pro0|datapath:e0|alu:alu0|lpm_mult:Mult0 ;
++------------------------------------------------+--------------+--------------------------------+
+; Parameter Name                                 ; Value        ; Type                           ;
++------------------------------------------------+--------------+--------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                     ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                   ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                   ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                 ;
+; LPM_WIDTHA                                     ; 16           ; Untyped                        ;
+; LPM_WIDTHB                                     ; 16           ; Untyped                        ;
+; LPM_WIDTHP                                     ; 32           ; Untyped                        ;
+; LPM_WIDTHR                                     ; 32           ; Untyped                        ;
+; LPM_WIDTHS                                     ; 1            ; Untyped                        ;
+; LPM_REPRESENTATION                             ; SIGNED       ; Untyped                        ;
+; LPM_PIPELINE                                   ; 0            ; Untyped                        ;
+; LATENCY                                        ; 0            ; Untyped                        ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                        ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                        ;
+; USE_EAB                                        ; OFF          ; Untyped                        ;
+; MAXIMIZE_SPEED                                 ; 5            ; Untyped                        ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                        ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped                        ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K            ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                        ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                        ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                        ;
+; CBXI_PARAMETER                                 ; mult_36t     ; Untyped                        ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                        ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                        ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                        ;
++------------------------------------------------+--------------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div0 ;
++------------------------+----------------+-------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                  ;
++------------------------+----------------+-------------------------------------------------------+
+; LPM_WIDTHN             ; 16             ; Untyped                                               ;
+; LPM_WIDTHD             ; 16             ; Untyped                                               ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                                               ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                                               ;
+; LPM_PIPELINE           ; 0              ; Untyped                                               ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                                               ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                               ;
+; CBXI_PARAMETER         ; lpm_divide_d2p ; Untyped                                               ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                               ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                               ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                            ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                          ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                          ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                        ;
++------------------------+----------------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div1 ;
++------------------------+----------------+-------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                  ;
++------------------------+----------------+-------------------------------------------------------+
+; LPM_WIDTHN             ; 16             ; Untyped                                               ;
+; LPM_WIDTHD             ; 16             ; Untyped                                               ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                               ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                               ;
+; LPM_PIPELINE           ; 0              ; Untyped                                               ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                               ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                               ;
+; CBXI_PARAMETER         ; lpm_divide_lkm ; Untyped                                               ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                               ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                               ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                            ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                          ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                          ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                        ;
++------------------------+----------------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: proc:pro0|datapath:e0|alu:alu0|lpm_mult:Mult1 ;
++------------------------------------------------+--------------+--------------------------------+
+; Parameter Name                                 ; Value        ; Type                           ;
++------------------------------------------------+--------------+--------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                     ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                   ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                   ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                 ;
+; LPM_WIDTHA                                     ; 16           ; Untyped                        ;
+; LPM_WIDTHB                                     ; 16           ; Untyped                        ;
+; LPM_WIDTHP                                     ; 32           ; Untyped                        ;
+; LPM_WIDTHR                                     ; 32           ; Untyped                        ;
+; LPM_WIDTHS                                     ; 1            ; Untyped                        ;
+; LPM_REPRESENTATION                             ; UNSIGNED     ; Untyped                        ;
+; LPM_PIPELINE                                   ; 0            ; Untyped                        ;
+; LATENCY                                        ; 0            ; Untyped                        ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                        ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                        ;
+; USE_EAB                                        ; OFF          ; Untyped                        ;
+; MAXIMIZE_SPEED                                 ; 6            ; Untyped                        ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                        ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped                        ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K            ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                        ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                        ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                        ;
+; CBXI_PARAMETER                                 ; mult_7dt     ; Untyped                        ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                        ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                        ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                        ;
++------------------------------------------------+--------------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                                        ;
++---------------------------------------+-----------------------------------------------+
+; Name                                  ; Value                                         ;
++---------------------------------------+-----------------------------------------------+
+; Number of entity instances            ; 2                                             ;
+; Entity Instance                       ; proc:pro0|datapath:e0|alu:alu0|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 16                                            ;
+;     -- LPM_WIDTHB                     ; 16                                            ;
+;     -- LPM_WIDTHP                     ; 32                                            ;
+;     -- LPM_REPRESENTATION             ; SIGNED                                        ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                            ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                            ;
+;     -- USE_EAB                        ; OFF                                           ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                          ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                            ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                            ;
+; Entity Instance                       ; proc:pro0|datapath:e0|alu:alu0|lpm_mult:Mult1 ;
+;     -- LPM_WIDTHA                     ; 16                                            ;
+;     -- LPM_WIDTHB                     ; 16                                            ;
+;     -- LPM_WIDTHP                     ; 32                                            ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                                      ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                            ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                            ;
+;     -- USE_EAB                        ; OFF                                           ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                          ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                            ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                            ;
++---------------------------------------+-----------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 100                         ;
+; cycloneiii_ff         ; 4265                        ;
+;     ENA               ; 4208                        ;
+;     ENA SCLR SLD      ; 13                          ;
+;     ENA SLD           ; 2                           ;
+;     SCLR              ; 13                          ;
+;     plain             ; 29                          ;
+; cycloneiii_io_obuf    ; 16                          ;
+; cycloneiii_lcell_comb ; 4728                        ;
+;     arith             ; 415                         ;
+;         2 data inputs ; 31                          ;
+;         3 data inputs ; 384                         ;
+;     normal            ; 4313                        ;
+;         0 data inputs ; 29                          ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 65                          ;
+;         3 data inputs ; 306                         ;
+;         4 data inputs ; 3910                        ;
+; cycloneiii_mac_mult   ; 2                           ;
+; cycloneiii_mac_out    ; 2                           ;
+;                       ;                             ;
+; Max LUT depth         ; 74.50                       ;
+; Average LUT depth     ; 17.40                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:30     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 15.0.2 Build 153 07/15/2015 SJ Web Edition
+    Info: Processing started: Mon Oct 19 17:18:12 2015
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off test -c test
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file unidad_control.vhd
+    Info (12022): Found design unit 1: unidad_control-Structure
+    Info (12023): Found entity 1: unidad_control
+Info (12021): Found 2 design units, including 1 entities, in source file SRAMController.vhd
+    Info (12022): Found design unit 1: SRAMController-comportament
+    Info (12023): Found entity 1: SRAMController
+Info (12021): Found 2 design units, including 1 entities, in source file sisa.vhd
+    Info (12022): Found design unit 1: sisa-Structure
+    Info (12023): Found entity 1: sisa
+Info (12021): Found 2 design units, including 1 entities, in source file rellotge.vhd
+    Info (12022): Found design unit 1: rellotge-Structure
+    Info (12023): Found entity 1: rellotge
+Info (12021): Found 2 design units, including 1 entities, in source file regfile.vhd
+    Info (12022): Found design unit 1: regfile-Structure
+    Info (12023): Found entity 1: regfile
+Info (12021): Found 2 design units, including 1 entities, in source file proc.vhd
+    Info (12022): Found design unit 1: proc-Structure
+    Info (12023): Found entity 1: proc
+Info (12021): Found 2 design units, including 1 entities, in source file multi.vhd
+    Info (12022): Found design unit 1: multi-Structure
+    Info (12023): Found entity 1: multi
+Info (12021): Found 2 design units, including 1 entities, in source file MemoryController.vhd
+    Info (12022): Found design unit 1: MemoryController-comportament
+    Info (12023): Found entity 1: MemoryController
+Info (12021): Found 2 design units, including 1 entities, in source file driver4Displays.vhd
+    Info (12022): Found design unit 1: driver4Displays-Structure
+    Info (12023): Found entity 1: driver4Displays
+Info (12021): Found 2 design units, including 1 entities, in source file display7Segments.vhd
+    Info (12022): Found design unit 1: display7Segments-Structure
+    Info (12023): Found entity 1: display7Segments
+Info (12021): Found 2 design units, including 1 entities, in source file datapath.vhd
+    Info (12022): Found design unit 1: datapath-Structure
+    Info (12023): Found entity 1: datapath
+Info (12021): Found 2 design units, including 1 entities, in source file controladors_IO.vhd
+    Info (12022): Found design unit 1: controladors_IO-Structure
+    Info (12023): Found entity 1: controladors_IO
+Info (12021): Found 2 design units, including 1 entities, in source file control_l.vhd
+    Info (12022): Found design unit 1: control_l-Structure
+    Info (12023): Found entity 1: control_l
+Info (12021): Found 2 design units, including 1 entities, in source file alu.vhd
+    Info (12022): Found design unit 1: alu-Structure
+    Info (12023): Found entity 1: alu
+Info (12127): Elaborating entity "sisa" for the top level hierarchy
+Info (12128): Elaborating entity "rellotge" for hierarchy "rellotge:Rlltge"
+Info (12128): Elaborating entity "controladors_IO" for hierarchy "controladors_IO:ctl_io"
+Info (12128): Elaborating entity "MemoryController" for hierarchy "MemoryController:mem0"
+Info (12128): Elaborating entity "SRAMController" for hierarchy "MemoryController:mem0|SRAMController:sram"
+Info (12128): Elaborating entity "proc" for hierarchy "proc:pro0"
+Info (12128): Elaborating entity "unidad_control" for hierarchy "proc:pro0|unidad_control:c0"
+Info (12128): Elaborating entity "control_l" for hierarchy "proc:pro0|unidad_control:c0|control_l:c0"
+Info (12128): Elaborating entity "multi" for hierarchy "proc:pro0|unidad_control:c0|multi:m0"
+Info (12128): Elaborating entity "datapath" for hierarchy "proc:pro0|datapath:e0"
+Info (12128): Elaborating entity "alu" for hierarchy "proc:pro0|datapath:e0|alu:alu0"
+Info (12128): Elaborating entity "regfile" for hierarchy "proc:pro0|datapath:e0|regfile:reg0"
+Info (12128): Elaborating entity "driver4Displays" for hierarchy "driver4Displays:dsplay"
+Info (12128): Elaborating entity "display7Segments" for hierarchy "driver4Displays:dsplay|display7Segments:Visor0"
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276004): RAM logic "proc:pro0|datapath:e0|regfile:reg0|Reg" is uninferred due to inappropriate RAM size
+Info (278001): Inferred 4 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "proc:pro0|datapath:e0|alu:alu0|Mult0"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "proc:pro0|datapath:e0|alu:alu0|Div0"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "proc:pro0|datapath:e0|alu:alu0|Div1"
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "proc:pro0|datapath:e0|alu:alu0|Mult1"
+Info (12130): Elaborated megafunction instantiation "proc:pro0|datapath:e0|alu:alu0|lpm_mult:Mult0"
+Info (12133): Instantiated megafunction "proc:pro0|datapath:e0|alu:alu0|lpm_mult:Mult0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHA" = "16"
+    Info (12134): Parameter "LPM_WIDTHB" = "16"
+    Info (12134): Parameter "LPM_WIDTHP" = "32"
+    Info (12134): Parameter "LPM_WIDTHR" = "32"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_36t.tdf
+    Info (12023): Found entity 1: mult_36t
+Info (12130): Elaborated megafunction instantiation "proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div0"
+Info (12133): Instantiated megafunction "proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "16"
+    Info (12134): Parameter "LPM_WIDTHD" = "16"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_d2p.tdf
+    Info (12023): Found entity 1: lpm_divide_d2p
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_8dg.tdf
+    Info (12023): Found entity 1: abs_divider_8dg
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_eaf.tdf
+    Info (12023): Found entity 1: alt_u_div_eaf
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_k0a.tdf
+    Info (12023): Found entity 1: lpm_abs_k0a
+Info (12130): Elaborated megafunction instantiation "proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div1"
+Info (12133): Instantiated megafunction "proc:pro0|datapath:e0|alu:alu0|lpm_divide:Div1" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "16"
+    Info (12134): Parameter "LPM_WIDTHD" = "16"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_lkm.tdf
+    Info (12023): Found entity 1: lpm_divide_lkm
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_dnh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_dnh
+Info (12130): Elaborated megafunction instantiation "proc:pro0|datapath:e0|alu:alu0|lpm_mult:Mult1"
+Info (12133): Instantiated megafunction "proc:pro0|datapath:e0|alu:alu0|lpm_mult:Mult1" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHA" = "16"
+    Info (12134): Parameter "LPM_WIDTHB" = "16"
+    Info (12134): Parameter "LPM_WIDTHP" = "32"
+    Info (12134): Parameter "LPM_WIDTHR" = "32"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "6"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_7dt.tdf
+    Info (12023): Found entity 1: mult_7dt
+Info (13014): Ignored 30 buffer(s)
+    Info (13016): Ignored 30 CARRY_SUM buffer(s)
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "SRAM_ADDR[15]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[16]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[17]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[18]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[19]" is stuck at GND
+    Warning (13410): Pin "SRAM_OE_N" is stuck at GND
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW[8]"
+Info (21057): Implemented 9025 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 69 output pins
+    Info (21060): Implemented 16 bidirectional pins
+    Info (21061): Implemented 8921 logic cells
+    Info (21062): Implemented 4 DSP elements
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 10 warnings
+    Info: Peak virtual memory: 1083 megabytes
+    Info: Processing ended: Mon Oct 19 17:19:11 2015
+    Info: Elapsed time: 00:00:59
+    Info: Total CPU time (on all processors): 00:01:09
+
+
