@@ -1,0 +1,94 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 9;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1605810 .scope module, "decoder2to4_tb" "decoder2to4_tb" 2 4;
+ .timescale -9 -9;
+v0x163dc80_0 .var "A", 1 0;
+RS_0x7f685c1d01c8 .resolv tri, L_0x163e720, L_0x163eae0, L_0x163ee70, L_0x163f240;
+v0x163dd20_0 .net8 "D", 3 0, RS_0x7f685c1d01c8; 4 drivers
+S_0x1604a80 .scope module, "uut" "decoder2to4" 2 9, 3 10, S_0x1605810;
+ .timescale -9 -9;
+L_0x163e9e0 .functor AND 1, L_0x163e810, L_0x163e8b0, C4<1>, C4<1>;
+L_0x163ed70 .functor AND 1, L_0x163ebd0, L_0x163ec70, C4<1>, C4<1>;
+L_0x163ed10 .functor AND 1, L_0x163efa0, L_0x163f040, C4<1>, C4<1>;
+L_0x163f530 .functor AND 1, L_0x163f360, L_0x163f400, C4<1>, C4<1>;
+v0x163d110_0 .net "A", 1 0, v0x163dc80_0; 1 drivers
+v0x163d1d0_0 .alias "D", 3 0, v0x163dd20_0;
+RS_0x7f685c1d01f8 .resolv tri, L_0x163e1b0, L_0x163e630, C4<zzzz>, C4<zzzz>;
+v0x163d270_0 .net8 "W", 3 0, RS_0x7f685c1d01f8; 2 drivers
+v0x163d310_0 .net *"_s11", 0 0, L_0x163e810; 1 drivers
+v0x163d3c0_0 .net *"_s13", 0 0, L_0x163e8b0; 1 drivers
+v0x163d460_0 .net *"_s14", 0 0, L_0x163e9e0; 1 drivers
+v0x163d540_0 .net *"_s19", 0 0, L_0x163ebd0; 1 drivers
+v0x163d5e0_0 .net *"_s21", 0 0, L_0x163ec70; 1 drivers
+v0x163d6d0_0 .net *"_s22", 0 0, L_0x163ed70; 1 drivers
+v0x163d770_0 .net *"_s27", 0 0, L_0x163efa0; 1 drivers
+v0x163d870_0 .net *"_s29", 0 0, L_0x163f040; 1 drivers
+v0x163d910_0 .net *"_s30", 0 0, L_0x163ed10; 1 drivers
+v0x163da20_0 .net *"_s35", 0 0, L_0x163f360; 1 drivers
+v0x163dac0_0 .net *"_s37", 0 0, L_0x163f400; 1 drivers
+v0x163dbe0_0 .net *"_s38", 0 0, L_0x163f530; 1 drivers
+L_0x163e0c0 .part v0x163dc80_0, 0, 1;
+RS_0x7f685c1d0108 .resolv tri, L_0x163ddd0, L_0x163ded0, C4<zz>, C4<zz>;
+L_0x163e1b0 .part/pv RS_0x7f685c1d0108, 2, 2, 4;
+L_0x163e590 .part v0x163dc80_0, 1, 1;
+RS_0x7f685c1d0048 .resolv tri, L_0x163e250, L_0x163e3a0, C4<zz>, C4<zz>;
+L_0x163e630 .part/pv RS_0x7f685c1d0048, 0, 2, 4;
+L_0x163e720 .part/pv L_0x163e9e0, 0, 1, 4;
+L_0x163e810 .part RS_0x7f685c1d01f8, 3, 1;
+L_0x163e8b0 .part RS_0x7f685c1d01f8, 1, 1;
+L_0x163eae0 .part/pv L_0x163ed70, 1, 1, 4;
+L_0x163ebd0 .part RS_0x7f685c1d01f8, 2, 1;
+L_0x163ec70 .part RS_0x7f685c1d01f8, 1, 1;
+L_0x163ee70 .part/pv L_0x163ed10, 2, 1, 4;
+L_0x163efa0 .part RS_0x7f685c1d01f8, 3, 1;
+L_0x163f040 .part RS_0x7f685c1d01f8, 0, 1;
+L_0x163f240 .part/pv L_0x163f530, 3, 1, 4;
+L_0x163f360 .part RS_0x7f685c1d01f8, 2, 1;
+L_0x163f400 .part RS_0x7f685c1d01f8, 0, 1;
+S_0x163cd70 .scope module, "U0" "decoder1to2" 3 16, 3 1, S_0x1604a80;
+ .timescale -9 -9;
+L_0x163d7f0 .functor NOT 1, L_0x163e0c0, C4<0>, C4<0>, C4<0>;
+L_0x163dfc0 .functor BUFZ 1, L_0x163e0c0, C4<0>, C4<0>, C4<0>;
+v0x163ce60_0 .net "A", 0 0, L_0x163e0c0; 1 drivers
+v0x163cf20_0 .net8 "D", 1 0, RS_0x7f685c1d0108; 2 drivers
+v0x163cfc0_0 .net *"_s2", 0 0, L_0x163d7f0; 1 drivers
+v0x163d060_0 .net *"_s7", 0 0, L_0x163dfc0; 1 drivers
+L_0x163ddd0 .part/pv L_0x163d7f0, 0, 1, 2;
+L_0x163ded0 .part/pv L_0x163dfc0, 1, 1, 2;
+S_0x15f2690 .scope module, "U1" "decoder1to2" 3 17, 3 1, S_0x1604a80;
+ .timescale -9 -9;
+L_0x163e2f0 .functor NOT 1, L_0x163e590, C4<0>, C4<0>, C4<0>;
+L_0x163e490 .functor BUFZ 1, L_0x163e590, C4<0>, C4<0>, C4<0>;
+v0x1628200_0 .net "A", 0 0, L_0x163e590; 1 drivers
+v0x163cb80_0 .net8 "D", 1 0, RS_0x7f685c1d0048; 2 drivers
+v0x163cc20_0 .net *"_s2", 0 0, L_0x163e2f0; 1 drivers
+v0x163ccc0_0 .net *"_s7", 0 0, L_0x163e490; 1 drivers
+L_0x163e250 .part/pv L_0x163e2f0, 0, 1, 2;
+L_0x163e3a0 .part/pv L_0x163e490, 1, 1, 2;
+    .scope S_0x1605810;
+T_0 ;
+    %vpi_call 2 12 "$dumpfile", "decoder2to4_tb.vcd";
+    %vpi_call 2 13 "$dumpvars", 1'sb0, S_0x1605810;
+    %set/v v0x163dc80_0, 0, 2;
+    %delay 20, 0;
+    %movi 8, 1, 2;
+    %set/v v0x163dc80_0, 8, 2;
+    %delay 20, 0;
+    %movi 8, 2, 2;
+    %set/v v0x163dc80_0, 8, 2;
+    %delay 20, 0;
+    %set/v v0x163dc80_0, 1, 2;
+    %delay 20, 0;
+    %vpi_call 2 20 "$display", "Test OK!";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "decoder2to4_tb.v";
+    "./decoder.v";
