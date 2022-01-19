@@ -1,0 +1,149 @@
+$date
+	Tue Jan 18 21:03:35 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module regFile_tb $end
+$var wire 32 ! data_a [31:0] $end
+$var wire 32 " data_b [31:0] $end
+$var reg 5 # addrA [4:0] $end
+$var reg 5 $ addrB [4:0] $end
+$var reg 5 % addrD [4:0] $end
+$var reg 1 & clk $end
+$var reg 32 ' d [31:0] $end
+$var reg 1 ( wrt $end
+$scope module uut $end
+$var wire 5 ) addrA [4:0] $end
+$var wire 5 * addrB [4:0] $end
+$var wire 5 + addrD [4:0] $end
+$var wire 1 , clk $end
+$var wire 32 - d [31:0] $end
+$var wire 32 . data_a [31:0] $end
+$var wire 32 / data_b [31:0] $end
+$var wire 1 0 wrt $end
+$var reg 5 1 addrA_reg [4:0] $end
+$var reg 5 2 addrB_reg [4:0] $end
+$var reg 5 3 addrD_reg [4:0] $end
+$var integer 32 4 i [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b100000 4
+bx 3
+bx 2
+b1 1
+00
+bx /
+b0 .
+bx -
+0,
+bx +
+bx *
+b1 )
+0(
+bx '
+0&
+bx %
+bx $
+b1 #
+bx "
+b0 !
+$end
+#5
+b1111 $
+b1111 *
+1&
+1,
+#10
+b1111 2
+b0 "
+b0 /
+0&
+0,
+#15
+1&
+1,
+b10 #
+b10 )
+#20
+b110 3
+b10 1
+0&
+0,
+b110 %
+b110 +
+#25
+1&
+1,
+#30
+0&
+0,
+#35
+1&
+1,
+b0 #
+b0 )
+b0 %
+b0 +
+b100010101000100 '
+b100010101000100 -
+#40
+b0 3
+b0 1
+0&
+0,
+#45
+1&
+1,
+#50
+0&
+0,
+#55
+1&
+1,
+#60
+0&
+0,
+b100010101000001 '
+b100010101000001 -
+1(
+10
+#65
+b100010101000001 !
+b100010101000001 .
+1&
+1,
+#70
+0&
+0,
+#75
+1&
+1,
+#80
+0&
+0,
+#85
+1&
+1,
+b0 $
+b0 *
+0(
+00
+#90
+b0 2
+b100010101000001 "
+b100010101000001 /
+0&
+0,
+#95
+1&
+1,
+#100
+0&
+0,
