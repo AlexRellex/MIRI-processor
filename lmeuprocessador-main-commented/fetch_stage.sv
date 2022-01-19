@@ -5,7 +5,7 @@ module fetch_stage(
     input [31:0] PCbranch, // ICache line where the PC must jump after a branch hit
     input clk,reset,flush, // flow control variables
     input branch_hit, // Branch jumps
-    input EN_REG, writePCEn, // Enable signals
+    input EN_REG, // Enable signals
     input [127:0] instr_from_mem, // Instruction from memory when cache misses
     input read_ready_from_mem,
     input written_data_ack_from_mem,
