@@ -1,0 +1,105 @@
+`include "header.vh"
+
+module iCache (
+        // SYSTEM
+    input clk,
+    input wrt_en,
+    input reset,
+
+
+    // Inputs
+    input [(`VIRT_ADDR_WIDTH)-1:0] addr, // Address to read (from PC)
+    //input [(`ICACHE_LINE_WIDTH-1):0] data_to_fill, // Data to fill in the cache
+    //input read_ready_from_mem, // Data requested to mem is ready
+    //input written_data_ack, // 
+
+    // Outputs
+    output reg [31:0] instr, // Instruction to send to next stage
+    output reg cache_hit); // Hit?
+    //output reg reqI_mem, // Request inst to memory
+    //output reg [25:0] reqAddrI_mem); // Address of the requested address
+
+
+    /*
+    |31          TAG            6|5  Idx  4|3 byte-in-line 0|     
+    ---------------------------------------------------------
+    */
+
+    // Internal registers
+   	reg [(`ICACHE_LINE_WIDTH-1):0] cache_data [(`ICACHE_NLINES-1):0];   // iCache memory
+	reg [(`ICACHE_TAG_WIDTH-1):0] cache_tag [(`ICACHE_NLINES-1):0];     // Tag of each line
+	reg [(`ICACHE_NLINES-1):0] cache_val_bit;    // Valid bit for each line
+    
+    // Wires to connect input-output
+    wire [(`ICACHE_TAG_WIDTH-1):0] addr_tag;    // Memory tag
+    wire [(`ICACHE_INDEX_WIDTH-1):0] addr_index;    // iCache line (direct mapped)
+    wire [(`ICACHE_BYTEINLINE_WIDTH-1):0] addr_byte; // Locate the byte-in-line
+
+    // Assign bits from addr (from PC) to tag, line and byteinline
+    /*
+    integer p_strt, p_end; // pointers
+    p_strt = `VIRT_ADDR_WIDTH-1;
+    p_end = `VIRT_ADDR_WIDTH - `ICACHE_TAG_WIDTH;
+    assign addr_tag = addr[p_strt:p_end];  // 31:6
+    p_strt = p_end - 1;
+    p_end = p_end - `ICACHE_INDEX_WIDTH;
+    assign addr_index = addr[p_strt:p_end]; // 5:4
+    p_strt = p_end - 1;
+    p_end = p_end - `ICACHE_BYTEINLINE_WIDTH; 
+    assign addr_byte = addr[p_strt:p_end];  // 3:0
+    */
+    assign addr_tag = addr[31:6];
+    assign addr_index = addr[5:4];
+    assign addr_byte = addr[3:0];
+    //reg pending_req;
+    //reg req_valid;
+    //reg ready_next;
+
+    integer line;
+    initial begin
+        //pending_req = 1'b0;
+        //req_valid = 1'b0;
+        //ready_next = 1'b0;
+        // Set each line of the iCache as not valid. No need to ctrl the data inside as it'll be overwritten
+        for (line=0; line<`ICACHE_NLINES; line=line+1) begin
+            cache_data[line] = 0;
+            cache_tag[line] = 0;
+            cache_val_bit[line] = 1'b0;            
+        end
+
+        cache_data[1] = 128'hAAAAAAAA_BBBBBBBB_CCCCCCCC_DDDDDDDD;
+        cache_tag[1] = 'b00_00000000_00000000_00000001;
+        cache_val_bit[1] = 1'b1;
+        
+	end
+
+    always @(negedge clk ) begin
+
+        // Flush iCache
+        if (reset == 1'b1) begin         
+            cache_hit = 1'b0;
+            cache_val_bit = 4'b0000; // set all lines to invalid
+        end
+
+        line = addr_index;
+        // Do we have a TAG hit?
+        if (addr_tag == cache_tag[line]) begin
+            // Is the chache line valid?
+            if (cache_val_bit[line] == 1'b1) begin
+                // hit and valid. Read the instruction
+                cache_hit=1'b1;
+                case(addr_byte)
+                    0 : instr = cache_data[line][31:0];
+                    1 : instr = cache_data[line][63:32];
+                    2 : instr = cache_data[line][95:64];
+                    3 : instr = cache_data[line][127:96];
+			endcase
+            end
+        end
+        
+        else begin // Request to memory
+            cache_hit = 1'b0;
+        end
+    end
+    
+endmodule
