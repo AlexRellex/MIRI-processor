@@ -3,7 +3,7 @@
 
 module regFile_tb;
     reg clk;
-    reg wrt;
+    reg wrt_en;
 
     reg [(`ADDR_WIDTH-1):0] addrA;
     reg [(`ADDR_WIDTH-1):0] addrB;
@@ -19,14 +19,14 @@ module regFile_tb;
 	reg [(`ADDR_WIDTH-1):0] addrB_reg;
 	reg [(`ADDR_WIDTH-1):0] addrD_reg;
 
-    regFile uut(clk, wrt, addrA, addrB, addrD,
+    regFile uut(clk, wrt_en, addrA, addrB, addrD,
     d, data_a, data_b);
 
     always #5 clk = ~clk;
 
     initial begin
         clk = 0;
-        wrt = 0;
+        wrt_en = 0;
 
         $dumpfile("regFile_tb.vcd");
         $dumpvars(0, regFile_tb);
@@ -43,11 +43,11 @@ module regFile_tb;
         addrA=5'b0000; #25;
 
         // Try to write to r0 with wrt enabled
-        wrt = 1;
+        wrt_en = 1;
         d=32'h0000_4541;
         addrD=5'b0000;
         addrA=5'b0000; #25;
-        wrt = 0;
+        wrt_en = 0;
         
         // Try to read from addrB
         addrB=5'b0000; #15;

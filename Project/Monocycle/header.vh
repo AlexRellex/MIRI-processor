@@ -12,6 +12,15 @@
 `define PAGE_SIZE_BITS  12 // 4 KB
 
 
+/////// Fetch
+`define ICACHE_NLINES 4
+`define ICACHE_LINE_WIDTH 128
+`define ICACHE_BYTEINLINE_WIDTH 4
+`define ICACHE_INDEX_WIDTH 2
+`define ICACHE_TAG_WIDTH 26
+
+
+/////// Decode
 // Register file
 `define REG_FILE_WIDTH 32
 `define REG_FILE_NREG  32

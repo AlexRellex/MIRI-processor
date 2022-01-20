@@ -7,7 +7,7 @@ module regFile(
 
     // SYSTEM
     input clk,
-    input wrt,
+    input wrt_en,
 
     // Inputs
     input [(`ADDR_WIDTH-1):0] addrA,  // Address to read A
@@ -38,7 +38,7 @@ module regFile(
 
     always @ (posedge clk)
         begin
-            if (wrt)
+            if (wrt_en)
                 regFile[addrD_reg] <= d;
         end
         
