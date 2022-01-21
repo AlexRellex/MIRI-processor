@@ -27,12 +27,16 @@
 
 /////// Memory
 // Virtual and Physical memory
-`define VIRT_ADDR_WIDTH 32
-`define PHY_ADDR_WIDTH  20
-`define PAGE_SIZE_BITS  12 // 4 KB
+`define VIRT_ADDR_WIDTH     32
+`define PHY_ADDR_WIDTH      20
+`define PAGE_SIZE           12  // 4 KB
+`define PHY_PAGE_NUM_WIDTH  `PHY_ADDR_WIDTH - `PAGE_SIZE
 
 // Main mamory
 `define MEM_DATA_WIDTH  128
 `define MEM_DATA_SIZE   32768 // 2^20 = 1048576 // 1MB = 1048576 --> 1048576/32 = 32768
+
+// iTLB
+`define ITLB_NUM_LINES  4
 
 `endif
