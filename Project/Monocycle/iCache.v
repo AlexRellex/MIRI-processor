@@ -16,8 +16,8 @@ module iCache (
     // Outputs
     output reg [31:0] instr, // Instruction to send to next stage
     output reg cache_hit); // Hit?
-    //output reg reqI_mem, // Request inst to memory
-    //output reg [25:0] reqAddrI_mem); // Address of the requested address
+    output reg reqI_mem, // Request inst to memory
+    output reg [31:0] reqAddrI_mem); // Address of the requested intruction in memory
 
 
     /*
@@ -51,9 +51,6 @@ module iCache (
     assign addr_tag = addr[31:6];
     assign addr_index = addr[5:4];
     assign addr_byte = addr[3:0];
-    //reg pending_req;
-    //reg req_valid;
-    //reg ready_next;
 
     integer line;
     initial begin
@@ -98,7 +95,11 @@ module iCache (
         end
         
         else begin // Request to memory
-            cache_hit = 1'b0;
+            // If cache miss begin request to memory
+            if (cache_hit == 1'b0) begin
+                reqAddrI_mem = address[31:0];
+                reqI_mem = 1'b1;
+            end
         end
     end
     

@@ -6,10 +6,7 @@
 
 /////////////// Global stuff
 
-// Virtual and Physical memory
-`define VIRT_ADDR_WIDTH 32
-`define PHY_ADDR_WIDTH  20
-`define PAGE_SIZE_BITS  12 // 4 KB
+
 
 
 /////// Fetch
@@ -26,5 +23,16 @@
 `define REG_FILE_NREG  32
 `define ADDR_WIDTH      5
 `define DATA_WIDTH      5
+
+
+/////// Memory
+// Virtual and Physical memory
+`define VIRT_ADDR_WIDTH 32
+`define PHY_ADDR_WIDTH  20
+`define PAGE_SIZE_BITS  12 // 4 KB
+
+// Main mamory
+`define MEM_DATA_WIDTH  128
+`define MEM_DATA_SIZE   32768 // 2^20 = 1048576 // 1MB = 1048576 --> 1048576/32 = 32768
 
 `endif
