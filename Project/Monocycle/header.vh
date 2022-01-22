@@ -39,4 +39,13 @@
 // iTLB
 `define ITLB_NUM_LINES  4
 
+
+/////// Cache
+// Store Buffer
+`define ADDR_WIDTH 32
+`define DATA_WIDTH 32
+`define SB_NLINES   4
+`define SB_WIDTH  `ADDR_WIDTH + `DATA_WIDTH
+
+
 `endif
