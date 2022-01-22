@@ -9,15 +9,15 @@ module iCache (
 
     // Inputs
     input [(`VIRT_ADDR_WIDTH)-1:0] addr, // Address to read (from PC)
-    //input [(`ICACHE_LINE_WIDTH-1):0] data_to_fill, // Data to fill in the cache
-    //input read_ready_from_mem, // Data requested to mem is ready
+    input [(`ICACHE_LINE_WIDTH-1):0] in_data, // Data to fill in the cache
+    input in_data_ready, // Data requested to mem is ready
     //input written_data_ack, // 
 
     // Outputs
     output reg [31:0] instr, // Instruction to send to next stage
-    output reg cache_hit); // Hit?
-    output reg reqI_mem, // Request inst to memory
-    output reg [31:0] reqAddrI_mem); // Address of the requested intruction in memory
+    output reg cache_hit, // Hit?
+    output reg req_to_mem, // Request inst to memory
+    output reg [31:0] req_to_mem_addr); // Address of the requested intruction in memory
 
 
     /*
@@ -59,8 +59,6 @@ module iCache (
         //ready_next = 1'b0;
         // Set each line of the iCache as not valid. No need to ctrl the data inside as it'll be overwritten
         for (line=0; line<`ICACHE_NLINES; line=line+1) begin
-            cache_data[line] = 0;
-            cache_tag[line] = 0;
             cache_val_bit[line] = 1'b0;            
         end
 
@@ -72,33 +70,45 @@ module iCache (
 
     always @(negedge clk ) begin
 
+        cache_hit = 0;
         // Flush iCache
         if (reset == 1'b1) begin         
             cache_hit = 1'b0;
-            cache_val_bit = 4'b0000; // set all lines to invalid
+            // Set all entries of the iCache to invalid
+            for (line=0; line<`ICACHE_NLINES; line=line+1) begin
+                cache_val_bit[line] = 1'b0;            
+            end 
         end
 
         line = addr_index;
-        // Do we have a TAG hit?
-        if (addr_tag == cache_tag[line]) begin
+        // Do we have a TAG hit? Only if iCache is not requiesting to memory
+        if (!req_to_mem && addr_tag == cache_tag[line]) begin
             // Is the chache line valid?
             if (cache_val_bit[line] == 1'b1) begin
                 // hit and valid. Read the instruction
                 cache_hit=1'b1;
+                // Get the instruction from the corresponding position whithin the iCache line
                 case(addr_byte)
                     0 : instr = cache_data[line][31:0];
                     1 : instr = cache_data[line][63:32];
                     2 : instr = cache_data[line][95:64];
                     3 : instr = cache_data[line][127:96];
-			endcase
+			    endcase
             end
         end
         
         else begin // Request to memory
             // If cache miss begin request to memory
-            if (cache_hit == 1'b0) begin
-                reqAddrI_mem = address[31:0];
-                reqI_mem = 1'b1;
+            if (!req_to_mem && !cache_hit) begin
+                req_to_mem_addr = addr;
+                req_to_mem = 1;
+            end
+
+            if (in_data_ready && req_to_mem) begin
+                cache_data[line] = in_data; // Fill data into the iCache
+                cache_tag[line] = addr_tag; // Fill the tag into the iCache line
+                cache_val_bit[line] = 1;    // The iCache line is now valid
+                req_to_mem = 0;             // We are not requesting to memory anymore
             end
         end
     end

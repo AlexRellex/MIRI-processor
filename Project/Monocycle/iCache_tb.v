@@ -7,8 +7,13 @@ module iCache_tb;
     reg reset;
 
     reg [(`VIRT_ADDR_WIDTH)-1:0] addr;
+    reg [(`ICACHE_LINE_WIDTH-1):0] in_data;
+    reg in_data_ready;
+
     wire [31:0] instr;
     wire cache_hit;
+    wire req_to_mem;
+    wire [31:0] req_to_mem_addr;
 
     // Internal registers
    	reg [(`ICACHE_LINE_WIDTH-1):0] cache_data [(`ICACHE_NLINES-1):0];   // iCache memory
@@ -20,7 +25,7 @@ module iCache_tb;
     wire [(`ICACHE_INDEX_WIDTH-1):0] addr_index;    // iCache line (direct mapped)
     wire [(`ICACHE_BYTEINLINE_WIDTH-1):0] addr_byte; // Locate the byte-in-line
 
-    iCache uut(clk, wrt_en, reset, addr, instr, cache_hit);
+    iCache uut(clk, wrt_en, reset, addr, in_data, in_data_ready, instr, cache_hit, req_to_mem, req_to_mem_addr);
 
 always #5 clk = ~clk;
 
@@ -50,7 +55,7 @@ always #5 clk = ~clk;
         addr = 32'h0000_0051; #20;
         addr = 32'h0000_0052; #20;
 
-        $finish;
+        $finish();
 
         $display("Test OK!");
     end
