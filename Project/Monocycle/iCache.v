@@ -16,7 +16,7 @@ module iCache (
     output reg [(`VIRT_ADDR_WIDTH-1):0] instr, // Instruction to send to next stage
     output reg cache_hit // Hit?
     output reg reqI_mem, // Request signal to memory
-    output reg [(`ICACHE_TAG_WIDTH-1):0] reqAddrI_mem); // Tag of the requested address
+    output reg [(`MEM_ADDRESS_LEN-1):0] reqAddrI_mem); // Tag of the requested address
 
 
     /*

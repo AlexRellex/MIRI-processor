@@ -59,7 +59,7 @@ module fetch_stage(
     assign instruction = ICACHE_INSTRUCTION;
 
     initial begin
-        PC.regIn = 0x1000;
+        PC.regIn = 32'h0000_1000;
     end
 
     //STAGE REGISTER 

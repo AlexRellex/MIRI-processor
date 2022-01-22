@@ -9,6 +9,8 @@
 `define VIRT_ADDR_WIDTH 32
 `define PHY_ADDR_WIDTH  20
 `define PAGE_SIZE_BITS  12 // 4 KB
+`define CODE_START 4096
+`define OS_START   8192
 
 
 /////// Fetch
@@ -17,6 +19,7 @@
 `define ICACHE_BYTEINLINE_WIDTH 4
 `define ICACHE_INDEX_WIDTH 2
 `define ICACHE_TAG_WIDTH 26
+`define MEM_ADDRESS_LEN 28
 
 
 /////// Decode
