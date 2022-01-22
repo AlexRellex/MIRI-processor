@@ -5,7 +5,6 @@
 `define WORD_SIZE       4
 
 /////////////// Global stuff
-
 // Virtual and Physical memory
 `define VIRT_ADDR_WIDTH 32
 `define PHY_ADDR_WIDTH  20
