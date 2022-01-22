@@ -57,8 +57,6 @@ module iCache (
         pending_data = 1'b0;
         // Set each line of the iCache as not valid. No need to ctrl the data inside as it'll be overwritten
         for (line=0; line<`ICACHE_NLINES; line=line+1) begin
-            cache_data[line] = 0;
-            cache_tag[line] = 0;
             cache_val_bit[line] = 1'b0;            
         end
 
@@ -70,6 +68,7 @@ module iCache (
 
     always @(negedge clk ) begin // Using posedge for the first part of the stage and negedge for the second
 
+        cache_hit = 0;
         // Flush iCache
         if (reset == 1'b1) begin         
             cache_hit = 1'b0;
