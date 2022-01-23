@@ -11,8 +11,8 @@ module fetch_stage(
     input [(`ICACHE_LINE_WIDTH-1):0] instr_from_mem, // Instruction from memory when cache misses
     input mem_data_rdy,
     input data_filled_ack,
-    output reg [(`VIRT_ADDR_WIDTH-1):0] PCnext, // PC for the next cycle
-    output reg [(`VIRT_ADDR_WIDTH-1):0] instruction, // Instruction from Icache to next stage
+    output reg [(`VIRT_ADDR_WIDTH-1):0] PCnext, // PC to decode
+    output reg [(`INST_WIDTH-1):0] instruction, // Instruction from Icache to next stage
     output reg reqI_mem, // Initiate request to memory
     output reg [(`ICACHE_TAG_WIDTH-1):0] reqAddrI_mem); // address identifier for request to mem
 

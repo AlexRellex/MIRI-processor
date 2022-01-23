@@ -50,6 +50,7 @@ module decode_stage(
         .clk(clk),
         .reset(reset),
         .instruction(instruction),
+        
         .ALU_REG_DEST(ALU_REG_DEST_INT),
         .is_branch(IS_BRANCH_INT),
         .MEM_R_EN(MEM_R_EN_INT),

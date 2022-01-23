@@ -20,6 +20,7 @@
 `define ICACHE_INDEX_WIDTH 2
 `define ICACHE_TAG_WIDTH 26
 `define MEM_ADDRESS_LEN 28
+`define INST_WIDTH 32
 
 
 /////// Decode
