@@ -1,14 +1,17 @@
 `include "header.vh"
 
+`include "alu.v"
+`include "alu_control.v"
+`include "../Electric_Components/MUX_2_4_8.v"
+
 module alu_stage(
     // SYSTEM
     input clk, reset, 
 
-    // From Fetch
+    // From Decode
     input [31:0] regAdata_init,regBdata_init,
     input [31:0] lower_half_instruction,
-    input [31:0] PCNEXT_init,
-    input [1:0] ALU_OP,
+    input [1:0] op,
     input is_immediate,
 
     // OUTPUT
@@ -31,14 +34,13 @@ module alu_stage(
     wire [31:0] mux_Imm_regB_out;
     assign immediate = lower_half_instruction;
     assign FUNCTION_TO_ALU = lower_half_instruction [5:0];
-    assign PC_NEXT_INTERNAL = PCNEXT_init + (lower_half_instruction << 2);
     assign regA_data = regAdata_init;
     assign regB_data = regBdata_init;
     
 
     alu_control alu_controller(
         .alu_function(FUNCTION_TO_ALU),
-        .alu_op(ALU_OP),
+        .alu_op(op),
         .alu_control(alu_control_int)
     );
 
