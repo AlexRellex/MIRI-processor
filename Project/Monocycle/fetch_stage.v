@@ -1,7 +1,7 @@
-`include "Monocycle/header.vh"
-`include "Electric_Components/MUX_2_4_8.v"
-`include "Electric_Components/flipflop.v"
-`include "Monocycle/iCache.v"
+`include "header.vh"
+`include "../Electric_Components/MUX_2_4_8.v"
+`include "../Electric_Components/flipflop.v"
+`include "iCache.v"
 
 
 module fetch_stage(

@@ -1,4 +1,3 @@
-`include "fetch_stage.v"
 module datapath(
     input clk, reset,
 );

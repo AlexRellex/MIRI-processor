@@ -1,5 +1,5 @@
-`include "Monocycle/header.vh"
-`include "Electric_Components/MUX_2_4_8.v"
+`include "header.vh"
+`include "../Electric_Components/MUX_2_4_8.v"
 module WB_stage(
     input clk, reset, 
     input RegW_EN, // write enable from previous stages

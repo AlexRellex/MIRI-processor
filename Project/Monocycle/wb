@@ -1,0 +1,147 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000001d20e05e9a0 .scope module, "WB_stage" "WB_stage" 2 3;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "reset";
+    .port_info 2 /INPUT 1 "RegW_EN";
+    .port_info 3 /INPUT 32 "alu_result";
+    .port_info 4 /INPUT 32 "loadValue";
+    .port_info 5 /INPUT 5 "addrD";
+    .port_info 6 /INPUT 1 "MemOrReg";
+    .port_info 7 /OUTPUT 32 "WriteData";
+    .port_info 8 /OUTPUT 5 "addrD_out";
+    .port_info 9 /OUTPUT 1 "RegW_EN_out";
+o000001d20e0b21e8 .functor BUFZ 5, C4<zzzzz>; HiZ drive
+L_000001d20e0adf00 .functor BUFZ 5, o000001d20e0b21e8, C4<00000>, C4<00000>, C4<00000>;
+L_000001d20e0ade20 .functor BUFZ 32, L_000001d20e102da0, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+o000001d20e0b2158 .functor BUFZ 1, C4<z>; HiZ drive
+L_000001d20e0ad9c0 .functor BUFZ 1, o000001d20e0b2158, C4<0>, C4<0>, C4<0>;
+o000001d20e0b2038 .functor BUFZ 1, C4<z>; HiZ drive
+v000001d20e09b4c0_0 .net "MemOrReg", 0 0, o000001d20e0b2038;  0 drivers
+v000001d20e09ba60_0 .net "RegW_EN", 0 0, o000001d20e0b2158;  0 drivers
+v000001d20e09b420_0 .net "RegW_EN_out", 0 0, L_000001d20e0ad9c0;  1 drivers
+v000001d20e09bb00_0 .net "WriteData", 31 0, L_000001d20e0ade20;  1 drivers
+v000001d20e09afc0_0 .net "WriteData_INT", 31 0, L_000001d20e102da0;  1 drivers
+v000001d20e09b060_0 .net "addrD", 4 0, o000001d20e0b21e8;  0 drivers
+v000001d20e09b600_0 .net "addrD_out", 4 0, L_000001d20e0adf00;  1 drivers
+o000001d20e0b1fd8 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v000001d20e09bc40_0 .net "alu_result", 31 0, o000001d20e0b1fd8;  0 drivers
+o000001d20e0b2248 .functor BUFZ 1, C4<z>; HiZ drive
+v000001d20e09b6a0_0 .net "clk", 0 0, o000001d20e0b2248;  0 drivers
+o000001d20e0b2008 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v000001d20e09b740_0 .net "loadValue", 31 0, o000001d20e0b2008;  0 drivers
+o000001d20e0b2278 .functor BUFZ 1, C4<z>; HiZ drive
+v000001d20e09b7e0_0 .net "reset", 0 0, o000001d20e0b2278;  0 drivers
+S_000001d20e0aab10 .scope module, "selectSource" "mux2Data" 2 16, 3 2 0, S_000001d20e05e9a0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "select";
+    .port_info 1 /INPUT 32 "a";
+    .port_info 2 /INPUT 32 "b";
+    .port_info 3 /OUTPUT 32 "y";
+v000001d20e09b920_0 .net "a", 31 0, o000001d20e0b1fd8;  alias, 0 drivers
+v000001d20e09b2e0_0 .net "b", 31 0, o000001d20e0b2008;  alias, 0 drivers
+v000001d20e09b380_0 .net "select", 0 0, o000001d20e0b2038;  alias, 0 drivers
+v000001d20e09b560_0 .net "y", 31 0, L_000001d20e102da0;  alias, 1 drivers
+L_000001d20e102da0 .functor MUXZ 32, o000001d20e0b1fd8, o000001d20e0b2008, o000001d20e0b2038, C4<>;
+S_000001d20e05eb30 .scope module, "mux2Logic" "mux2Logic" 3 25;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "select";
+    .port_info 1 /INPUT 4 "a";
+    .port_info 2 /INPUT 4 "b";
+    .port_info 3 /OUTPUT 4 "y";
+o000001d20e0b2488 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v000001d20e09bce0_0 .net "a", 3 0, o000001d20e0b2488;  0 drivers
+o000001d20e0b24b8 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v000001d20e09bd80_0 .net "b", 3 0, o000001d20e0b24b8;  0 drivers
+o000001d20e0b24e8 .functor BUFZ 1, C4<z>; HiZ drive
+v000001d20e09be20_0 .net "select", 0 0, o000001d20e0b24e8;  0 drivers
+v000001d20e09bec0_0 .net "y", 3 0, L_000001d20e1032a0;  1 drivers
+L_000001d20e1032a0 .functor MUXZ 4, o000001d20e0b2488, o000001d20e0b24b8, o000001d20e0b24e8, C4<>;
+S_000001d20e05ecc0 .scope module, "mux2RegD" "mux2RegD" 3 15;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "select";
+    .port_info 1 /INPUT 5 "a";
+    .port_info 2 /INPUT 5 "b";
+    .port_info 3 /OUTPUT 5 "y";
+o000001d20e0b2608 .functor BUFZ 5, C4<zzzzz>; HiZ drive
+v000001d20e0a3740_0 .net "a", 4 0, o000001d20e0b2608;  0 drivers
+o000001d20e0b2638 .functor BUFZ 5, C4<zzzzz>; HiZ drive
+v000001d20e0a37e0_0 .net "b", 4 0, o000001d20e0b2638;  0 drivers
+o000001d20e0b2668 .functor BUFZ 1, C4<z>; HiZ drive
+v000001d20e0a3420_0 .net "select", 0 0, o000001d20e0b2668;  0 drivers
+v000001d20e0a3880_0 .net "y", 4 0, L_000001d20e1029e0;  1 drivers
+L_000001d20e1029e0 .functor MUXZ 5, o000001d20e0b2608, o000001d20e0b2638, o000001d20e0b2668, C4<>;
+S_000001d20e0aa7f0 .scope module, "mux4Data" "mux4Data" 3 48;
+ .timescale 0 0;
+    .port_info 0 /INPUT 2 "select";
+    .port_info 1 /INPUT 32 "a";
+    .port_info 2 /INPUT 32 "b";
+    .port_info 3 /INPUT 32 "c";
+    .port_info 4 /INPUT 32 "d";
+    .port_info 5 /OUTPUT 32 "y";
+v000001d20e0a36a0_0 .net *"_ivl_1", 0 0, L_000001d20e103700;  1 drivers
+v000001d20e0a3920_0 .net *"_ivl_3", 0 0, L_000001d20e102e40;  1 drivers
+v000001d20e0a3ba0_0 .net *"_ivl_4", 31 0, L_000001d20e102b20;  1 drivers
+v000001d20e0a39c0_0 .net *"_ivl_7", 0 0, L_000001d20e102ee0;  1 drivers
+v000001d20e0a3a60_0 .net *"_ivl_8", 31 0, L_000001d20e1037a0;  1 drivers
+o000001d20e0b2878 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v000001d20e0a3ce0_0 .net "a", 31 0, o000001d20e0b2878;  0 drivers
+o000001d20e0b28a8 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v000001d20e0a3b00_0 .net "b", 31 0, o000001d20e0b28a8;  0 drivers
+o000001d20e0b28d8 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v000001d20e0a3100_0 .net "c", 31 0, o000001d20e0b28d8;  0 drivers
+o000001d20e0b2908 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v000001d20e0a31a0_0 .net "d", 31 0, o000001d20e0b2908;  0 drivers
+o000001d20e0b2938 .functor BUFZ 2, C4<zz>; HiZ drive
+v000001d20e0a3c40_0 .net "select", 1 0, o000001d20e0b2938;  0 drivers
+v000001d20e0a32e0_0 .net "y", 31 0, L_000001d20e102a80;  1 drivers
+L_000001d20e103700 .part o000001d20e0b2938, 1, 1;
+L_000001d20e102e40 .part o000001d20e0b2938, 0, 1;
+L_000001d20e102b20 .functor MUXZ 32, o000001d20e0b28d8, o000001d20e0b2908, L_000001d20e102e40, C4<>;
+L_000001d20e102ee0 .part o000001d20e0b2938, 0, 1;
+L_000001d20e1037a0 .functor MUXZ 32, o000001d20e0b2878, o000001d20e0b28a8, L_000001d20e102ee0, C4<>;
+L_000001d20e102a80 .functor MUXZ 32, L_000001d20e1037a0, L_000001d20e102b20, L_000001d20e103700, C4<>;
+S_000001d20e0aa980 .scope module, "mux4Logic" "mux4Logic" 3 36;
+ .timescale 0 0;
+    .port_info 0 /INPUT 2 "select";
+    .port_info 1 /INPUT 4 "a";
+    .port_info 2 /INPUT 4 "b";
+    .port_info 3 /INPUT 4 "c";
+    .port_info 4 /INPUT 4 "d";
+    .port_info 5 /OUTPUT 4 "y";
+v000001d20e0a3d80_0 .net *"_ivl_1", 0 0, L_000001d20e103340;  1 drivers
+v000001d20e0a3ec0_0 .net *"_ivl_3", 0 0, L_000001d20e103480;  1 drivers
+v000001d20e0a3560_0 .net *"_ivl_4", 3 0, L_000001d20e1028a0;  1 drivers
+v000001d20e0a3e20_0 .net *"_ivl_7", 0 0, L_000001d20e102d00;  1 drivers
+v000001d20e0a3060_0 .net *"_ivl_8", 3 0, L_000001d20e102bc0;  1 drivers
+o000001d20e0b2ba8 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v000001d20e0a3600_0 .net "a", 3 0, o000001d20e0b2ba8;  0 drivers
+o000001d20e0b2bd8 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v000001d20e0a3f60_0 .net "b", 3 0, o000001d20e0b2bd8;  0 drivers
+o000001d20e0b2c08 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v000001d20e0a3240_0 .net "c", 3 0, o000001d20e0b2c08;  0 drivers
+o000001d20e0b2c38 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v000001d20e0a3380_0 .net "d", 3 0, o000001d20e0b2c38;  0 drivers
+o000001d20e0b2c68 .functor BUFZ 2, C4<zz>; HiZ drive
+v000001d20e0a34c0_0 .net "select", 1 0, o000001d20e0b2c68;  0 drivers
+v000001d20e103660_0 .net "y", 3 0, L_000001d20e102c60;  1 drivers
+L_000001d20e103340 .part o000001d20e0b2c68, 1, 1;
+L_000001d20e103480 .part o000001d20e0b2c68, 0, 1;
+L_000001d20e1028a0 .functor MUXZ 4, o000001d20e0b2c08, o000001d20e0b2c38, L_000001d20e103480, C4<>;
+L_000001d20e102d00 .part o000001d20e0b2c68, 0, 1;
+L_000001d20e102bc0 .functor MUXZ 4, o000001d20e0b2ba8, o000001d20e0b2bd8, L_000001d20e102d00, C4<>;
+L_000001d20e102c60 .functor MUXZ 4, L_000001d20e102bc0, L_000001d20e1028a0, L_000001d20e103340, C4<>;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "WB_stage.v";
+    "./../Electric_Components/MUX_2_4_8.v";

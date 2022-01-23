@@ -20,9 +20,10 @@ module mem_ctrl(
     reg arbiter;
     reg was_write;
 
-    reg [(`MEM_LINE_WIDTH-1):0] fake_data_buffer; // Buffer to fake data delay
+    wire [(`MEM_LINE_WIDTH-1):0] fake_data_buffer; // Buffer to fake data delay
     reg [(`MEM_LINE_WIDTH-1):0] data_to_write;
-
+    reg [(`MEM_ADDRESS_LEN-1):0]addr;
+    
     main_memory ram(
         //Inputs
         //.reset(reset),
@@ -30,7 +31,7 @@ module mem_ctrl(
         .data_to_write(data_to_write),
         .wrt_en(is_write),
         //Outputs
-        .data_returned(fake_data_buffer)
+        .data_to_read(fake_data_buffer)
     );
 
     always @ (posedge clk) begin
