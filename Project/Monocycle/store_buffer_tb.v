@@ -31,7 +31,7 @@ module store_buffer_tb;
     always #5 clk = ~clk;
 
     initial begin
-        $dumpfile("SB_tb.vcd");
+        $dumpfile("store_buffer_tb.vcd");
         $dumpvars(0, store_buffer_tb);
         clk = 0;
         reset = 0;
