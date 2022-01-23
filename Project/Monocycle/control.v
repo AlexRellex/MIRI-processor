@@ -16,7 +16,7 @@ module control (
     );
 
     // R-type               M-Type              B-Type
-    //31-25 opcode          31-25 opcode     31-25 opcode
+    //31-25 opcode          31-25 opcode        31-25 opcode
     //24-20 dst             24-20 dst           24-20 off_hi
     //19-15 src1            19-15 src1          19-15 src1
     //14-10 scr2            14-0 Offset         14-10 src2/off_mem

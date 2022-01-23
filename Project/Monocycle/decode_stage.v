@@ -1,7 +1,7 @@
-`include "Monocycle/header.vh"
-`include "Monocycle/control.v"
-`include "Monocycle/regFile.v"
-`include "Electric_Components/MUX_2_4_8.v"
+`include "header.vh"
+`include "control.v"
+`include "regFile.v"
+`include "../Electric_Components/MUX_2_4_8.v"
 module decode_stage(
     input clk,reset,
     input [(`VIRT_ADDR_WIDTH-1):0] PCNEXT_FETCH, // PC from fetch stage
@@ -43,10 +43,7 @@ module decode_stage(
     wire injecting_nop;
 
     // Connect signals to other stages
-    assign EN_REG_FETCH = EN_REG_FETCH_INT;
-    assign EN_REG_DECODE = EN_REG_DECODE_INT;
-    assign EN_REG_ALU = EN_REG_ALU_INT;
-    assign EN_REG_MEM = EN_REG_MEM_INT;
+
 
     control control(
         // SYSTEM
@@ -54,26 +51,26 @@ module decode_stage(
         .reset(reset),
         // INPUT
         .instruction(instruction),
-        .block_pipe_data_cache(block_pipe_data_cache),
-        .block_pipe_instr_cache(block_pipe_instr_cache),
+        //.block_pipe_data_cache(block_pipe_data_cache),
+        //.block_pipe_instr_cache(block_pipe_instr_cache),
         // OUTPUT
-        .ALU_REG_DEST(ALU_REG_DEST_INT),
-        .is_branch(is_branch_INT),
-        .MEM_R_EN(MEM_R_EN_INT), 
-        .MEM_W_EN(MEM_W_EN_INT),
-        .MEM_TO_REG(MEM_TO_REG_INT),
-        .WB_EN(WB_EN_INT),
+        //.ALU_REG_DEST(ALU_REG_DEST_INT),
+        //.is_branch(is_branch_INT),
+        //.MEM_R_EN(MEM_R_EN_INT), 
+        //.MEM_W_EN(MEM_W_EN_INT),
+        //.MEM_TO_REG(MEM_TO_REG_INT),
+        //.WB_EN(WB_EN_INT),
         .ALU_OP(ALU_OP_INT),
         .regA(addrA_INT), 
         .regB(addrB_INT), 
         .regD(addrD_INT),
-        .EN_REG_FETCH(EN_REG_FETCH_INT), 
-        .EN_REG_DECODE(EN_REG_DECODE_INT), 
-        .EN_REG_ALU(EN_REG_ALU_INT), 
-        .EN_REG_MEM(EN_REG_MEM_INT),
-        .is_immediate(is_immediate_INT),
-        .inject_nop(inject_nop),
-        .injecting_nop(injecting_nop)
+        //.EN_REG_FETCH(EN_REG_FETCH_INT), 
+        //.EN_REG_DECODE(EN_REG_DECODE_INT), 
+        //.EN_REG_ALU(EN_REG_ALU_INT), 
+        //.EN_REG_MEM(EN_REG_MEM_INT),
+        .is_immediate(is_immediate_INT)//,
+        //.inject_nop(inject_nop),
+        //.injecting_nop(injecting_nop)
     );
 
     regFile regfile(
@@ -158,5 +155,10 @@ module decode_stage(
             addrA  <= addrA_INT;
             addrB <= addrB_INT;
             is_immediate <= is_immediate_INT;
+            EN_REG_FETCH = EN_REG_FETCH_INT;
+            EN_REG_DECODE = EN_REG_DECODE_INT;
+            EN_REG_ALU = EN_REG_ALU_INT;
+            EN_REG_MEM = EN_REG_MEM_INT;
         end
+    end
 endmodule

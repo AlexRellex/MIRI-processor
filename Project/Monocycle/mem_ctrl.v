@@ -30,7 +30,7 @@ module mem_ctrl(
         .data_to_write(data_to_write),
         .wrt_en(is_write),
         //Outputs
-        .data_returned(fake_data_buffer),
+        .data_returned(fake_data_buffer)
     );
 
     always @ (posedge clk) begin
@@ -73,13 +73,13 @@ module mem_ctrl(
                     written_data_ack = 1'b1;
                 end
                 else begin
-                    data_to_cache = fake_data_buffer
+                    data_to_cache = fake_data_buffer;
                     read_ready_for_dcache = 1'b1;
                 end
          
             end
             else if (arbiter == 1'b1) begin
-                data_to_cache = fake_data_buffer
+                data_to_cache = fake_data_buffer;
                 read_ready_for_icache = 1'b1;
             end
             fake_latency = 0;            
