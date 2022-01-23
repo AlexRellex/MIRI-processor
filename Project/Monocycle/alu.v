@@ -9,8 +9,8 @@ module alu(
     always @(*) begin
         case (op)
             // Arithmetic operations
-            3'b000: regD <= regA + regB;      // 0: ADD 
-            3'b001: regD <= regA - regB;      // 1: SUB 
+            4'b0000: regD <= regA + regB;      // 0: ADD 
+            4'b0001: regD <= regA - regB;      // 1: SUB 
             /*
 
             // Bit-wise operations
@@ -33,10 +33,10 @@ module alu(
 
             */
 
-            default: begin
-                    regD <= regA + regB; 
-                    $display("ALU: Operation unknown!");
-                end
+        default: begin
+            regD <= regA + regB;
+            $display("ALU: Operation unknown!", op);
+        end
             
         endcase
 

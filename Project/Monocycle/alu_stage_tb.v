@@ -21,7 +21,7 @@ module alu_stage_tb;
     wire [4:0] regD;
 
     // Internal wires
-   wire zero_internal;
+    wire zero_internal;
     wire [3:0] alu_control_int;
     wire [31:0] PC_NEXT_INTERNAL;
     wire [5:0] FUNCTION_TO_ALU;
@@ -43,6 +43,27 @@ module alu_stage_tb;
     initial begin
         $dumpfile("alu_stage_tb.vcd");
         $dumpvars(0, alu_stage_tb);
+        clk=0;
+        reset=0;
+        lower_half_instruction = 32'h0000_0001;
+
+        ALU_OP = 2'b10;
+        
+        regAdata_init = 32'h0000_0001;
+        regBdata_init = 32'h0000_0001;
+        #20;
+
+        //ADD
+        #20;
+
+        //SUB
+        lower_half_instruction = 32'h0000_0000;
+        #20;
+
+        regAdata_init = 32'h0000_0011;
+        regBdata_init = 32'h0000_0021;
+        //ADD
+        lower_half_instruction = 32'h0000_0001;
         #20;
         $finish();
     end

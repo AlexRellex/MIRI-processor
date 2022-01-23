@@ -15,6 +15,7 @@ module alu_control (
         end
 
         else begin
+            $display("ALU Control: Alu function not found");
             alu_control = 4'b0000; //ADD
         end
 
