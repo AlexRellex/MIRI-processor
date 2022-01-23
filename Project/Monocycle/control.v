@@ -45,7 +45,7 @@ module control (
     jump            0x31
     */
 
-    wire [5:0] operation;
+    wire signed [5:0] operation;
     assign operation = instruction [31:25];
     reg [5:0] default_alu_op = 6'b000000; // ADD
 
@@ -54,8 +54,9 @@ module control (
     always @ ( * ) begin 
 
         case({operation})
-            // ADD
-            6'b000000: begin
+            // R-type
+            6'b000000, 6'b000001: begin
+                $display("ADD/SUM");
                 WB_EN <= 1;
                 ALU_REG_DEST <= 1;
                 is_branch <= 0;
@@ -68,22 +69,10 @@ module control (
                 regB <= instruction[14:10];
                 is_immediate  <= 0;
             end
-            // SUB
-            6'b000001: begin
-                WB_EN <= 1;
-                ALU_REG_DEST <= 1;
-                is_branch <= 0;
-                MEM_R_EN <= 0;
-                MEM_W_EN <= 0;
-                MEM_TO_REG <= 0;
-                ALU_OP <= operation;
-                regD <= instruction[24:20];
-                regA <= instruction[19:15];
-                regB <= instruction[14:10];
-                is_immediate <= 0;
-            end
+
             // MUL
             6'b000010: begin
+                $display("MUL");
                 WB_EN <= 1;
                 ALU_REG_DEST <= 1;
                 is_branch <= 0;
@@ -96,8 +85,10 @@ module control (
                 regB <= instruction[14:10];
                 is_immediate  <= 0;
             end
+
             // LDB, LDW
             6'b010000, 6'b010001: begin
+                $display("LD");
                 WB_EN <= 1;
                 ALU_REG_DEST <= 0;
                 is_branch <= 0;
@@ -105,13 +96,13 @@ module control (
                 MEM_W_EN <= 0;
                 MEM_TO_REG <= 1;
                 ALU_OP <= default_alu_op;
-                regA <= instruction[24:20];
-                regB <= instruction[19:15];
-                regB <= 6'b000000;
+                regA <= instruction[19:15];
+                regB <= instruction[24:20]; // dst
                 is_immediate  <= 1;
             end
             // STB, STW
             6'b010010, 6'b010011: begin
+                $display("STR");
                 WB_EN <= 0;
                 ALU_REG_DEST <= 1;
                 is_branch <= 0;
@@ -121,7 +112,6 @@ module control (
                 ALU_OP <= default_alu_op;
                 regA <= instruction[24:20];
                 regB <= instruction[19:15];
-                regD <= 6'b000000;
                 is_immediate  <= 1;
             end
             //Move
