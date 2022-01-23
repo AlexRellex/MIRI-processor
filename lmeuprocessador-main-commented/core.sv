@@ -37,7 +37,6 @@ module core(
 
 
     //WB - Decode
-
     wire [31:0] write_data_to_reg;
     wire [4:0] destination_reg;
     wire RegW_en_to_decode;
@@ -47,11 +46,9 @@ module core(
     wire BRANCH_TO_FETCH;
     wire [31:0] PCNEXT_TO_FETCH;
 
-    //REgister D wires
-
+    // RegD lecture control variables
     wire [4:0] regD_to_wb;
     wire [4:0] regD_to_mem;
-
     wire is_immediate;
 
     //Control registers enables
