@@ -7,12 +7,12 @@ module store_buffer (
     // INPUT
     input is_store,
     input is_load, 
-    input [(`ADDR_WIDTH-1):0] in_addr, 
-    input [(`DATA_WIDTH-1):0] in_data,
+    input [(`SB_ADDR_WIDTH-1):0] in_addr, 
+    input [(`SB_DATA_WIDTH-1):0] in_data,
     input cache_hit,
 
     // OUTPUT
-    output reg [(`DATA_WIDTH-1):0] out_data,
+    output reg [(`SB_DATA_WIDTH-1):0] out_data,
     output reg SB_hit,
     output reg [(`SB_WIDTH-1):0] data_to_cache,
     output reg sending_data_to_cache,
@@ -78,7 +78,7 @@ module store_buffer (
             for (line=0; line < `SB_NLINES; line=line+1) begin
                 // Is the line of the SB valid?
                 if (SB_valid[line]) begin
-                    SB_addr = SB[line][(`SB_WIDTH-1):`ADDR_WIDTH];
+                    SB_addr = SB[line][(`SB_WIDTH-1):`SB_ADDR_WIDTH];
                     $display("line:", line, "  SB:", SB_addr);
                     if (SB_addr == in_addr) begin
                         $display("hit addr in store");
@@ -97,12 +97,12 @@ module store_buffer (
              for (line=0; line < `SB_NLINES; line=line+1) begin
                 // Is the line of the SB valid?
                 if (SB_valid[line]) begin
-                    SB_addr = SB[line][(`SB_WIDTH-1):`ADDR_WIDTH];
+                    SB_addr = SB[line][(`SB_WIDTH-1):`SB_ADDR_WIDTH];
                     $display("line:", line, "  SB:", SB_addr);
                     if (SB_addr == in_addr && cache_hit) begin
                         $display("hit addr and cache in load");
                         addr_found = 1;
-                        out_data = SB[line][(`DATA_WIDTH-1):0];
+                        out_data = SB[line][(`SB_DATA_WIDTH-1):0];
                     end
                     else begin
                         if (cache_hit) begin

@@ -1,4 +1,4 @@
-`include "header.vh"
+//`include "header.vh"
 
 module iCache (
         // SYSTEM
@@ -14,7 +14,7 @@ module iCache (
 
     // Outputs
     output reg [(`VIRT_ADDR_WIDTH-1):0] instr, // Instruction to send to next stage
-    output reg cache_hit // Hit?
+    output reg cache_hit, // Hit?
     output reg reqI_mem, // Request signal to memory
     output reg [(`MEM_ADDRESS_LEN-1):0] reqAddrI_mem); // Tag of the requested address
 
@@ -116,6 +116,7 @@ module iCache (
                 reqAddrI_mem = addr[31:4];
                 reqI_mem = 1'b1;
             end
+        end
     end
     
 endmodule

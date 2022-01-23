@@ -1,7 +1,8 @@
+`include "Monocycle/header.vh"
 `include "Electric_Components/MUX_2_4_8.v"
 `include "Electric_Components/flipflop.v"
 `include "Monocycle/iCache.v"
-`include "Monocycle/header.vh"
+
 
 module fetch_stage(
     input clk,reset, // flow control variables    
@@ -12,13 +13,16 @@ module fetch_stage(
     input mem_data_rdy,
     input data_filled_ack,
     output reg [(`VIRT_ADDR_WIDTH-1):0] PCnext, // PC to decode
-    output reg [(`INST_WIDTH-1):0] instruction, // Instruction from Icache to next stage
-    output reg reqI_mem, // Initiate request to memory
-    output reg [(`ICACHE_TAG_WIDTH-1):0] reqAddrI_mem); // address identifier for request to mem
+    output [(`INST_WIDTH-1):0] instruction, // Instruction from Icache to next stage
+    output reg request_inst_memory, // Initiate request to memory
+    output reg [(`MEM_ADDRESS_LEN-1):0] request_inst_memory_addr); // address identifier for request to mem
 
-    wire [(`VIRT_ADDR_WIDTH-1):0] ADDER_MUX, MUX_PC, ICACHE_INSTRUCTION, PC_ADDER_ICACHE; // wires, format FROM_TO_ALSO
-    reg cache_hit;
-    
+    wire [(`VIRT_ADDR_WIDTH-1):0] MUX_PC, ICACHE_INSTRUCTION, PC_ADDER_ICACHE; // wires, format FROM_TO_ALSO
+    reg [31:0] ADDER_MUX;
+    wire cache_hit;
+    wire request_inst_memory_w;
+    wire [(`MEM_ADDRESS_LEN-1):0] request_inst_memory_addr_w;
+
     mux2Data muxSelectPC( // 2way mux
         //Inputs
         .select(branch_hit),
@@ -28,9 +32,7 @@ module fetch_stage(
         .y(MUX_PC)
     );
 
-    assign ADDER_MUX = PC_ADDER_ICACHE +4; // simple logic adder
-
-    instr_cache iCache(
+    iCache instr_cache (
         //Inputs
         .clk(clk),
         .reset(reset),
@@ -41,16 +43,17 @@ module fetch_stage(
         .data_filled_ack(data_filled_ack),
         //Outputs
         .instr(ICACHE_INSTRUCTION),
-        .cache_hit(cache_hit)
-        .reqI_mem(reqI_mem),
-        .reqAddrI_mem(reqAddrI_mem),
+        .cache_hit(cache_hit),
+        .reqI_mem(request_inst_memory_w),
+        .reqAddrI_mem(request_inst_memory_addr_w)
     );
+
 
     flipflop PC( // flip flop to store PC
         //Inputs
         .clk(clk),
         .reset(reset),
-        .writeEn(wrt_en & !mem_data_rdy & cache_hit ),
+        .write_enable(wrt_en),
         .regIn(MUX_PC),
         //Outputs
         .regOut(PC_ADDER_ICACHE)
@@ -59,17 +62,22 @@ module fetch_stage(
     assign instruction = ICACHE_INSTRUCTION;
 
     initial begin
-        PC.regIn = 32'h0000_1000;
+        ADDER_MUX = 32'h0000_1000;
     end
-
     //STAGE REGISTER 
     always @ (posedge clk) begin
 
         if (reset) begin
             PCnext <= 0;
         end
+        /*
         else if (wrt_en && !mem_data_rdy) begin
-            
+            request_inst_memory = request_inst_memory_w;
+            request_inst_memory_addr = request_inst_memory_addr_w;
+            PCnext <= MUX_PC;
+        end*/
+        else begin
+            ADDER_MUX = ADDER_MUX + 4;
             PCnext <= MUX_PC;
         end
 
