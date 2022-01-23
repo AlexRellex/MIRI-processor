@@ -17,11 +17,12 @@ module fetch_stage(
     output reg request_inst_memory, // Initiate request to memory
     output reg [(`MEM_ADDRESS_LEN-1):0] request_inst_memory_addr); // address identifier for request to mem
 
-    wire [(`VIRT_ADDR_WIDTH-1):0] ADDER_MUX, MUX_PC, ICACHE_INSTRUCTION, PC_ADDER_ICACHE; // wires, format FROM_TO_ALSO
+    wire [(`VIRT_ADDR_WIDTH-1):0] MUX_PC, ICACHE_INSTRUCTION, PC_ADDER_ICACHE; // wires, format FROM_TO_ALSO
+    reg [31:0] ADDER_MUX;
     wire cache_hit;
     wire request_inst_memory_w;
     wire [(`MEM_ADDRESS_LEN-1):0] request_inst_memory_addr_w;
-    
+
     mux2Data muxSelectPC( // 2way mux
         //Inputs
         .select(branch_hit),
@@ -30,8 +31,6 @@ module fetch_stage(
         //Outputs
         .y(MUX_PC)
     );
-
-    assign ADDER_MUX = PC_ADDER_ICACHE +4; // simple logic adder
 
     iCache instr_cache (
         //Inputs
@@ -54,7 +53,7 @@ module fetch_stage(
         //Inputs
         .clk(clk),
         .reset(reset),
-        .write_enable(wrt_en & !mem_data_rdy & cache_hit ),
+        .write_enable(wrt_en),
         .regIn(MUX_PC),
         //Outputs
         .regOut(PC_ADDER_ICACHE)
@@ -63,18 +62,22 @@ module fetch_stage(
     assign instruction = ICACHE_INSTRUCTION;
 
     initial begin
-        PCnext = 32'h0000_1000;
+        ADDER_MUX = 32'h0000_1000;
     end
-
     //STAGE REGISTER 
     always @ (posedge clk) begin
 
         if (reset) begin
             PCnext <= 0;
         end
+        /*
         else if (wrt_en && !mem_data_rdy) begin
             request_inst_memory = request_inst_memory_w;
             request_inst_memory_addr = request_inst_memory_addr_w;
+            PCnext <= MUX_PC;
+        end*/
+        else begin
+            ADDER_MUX = ADDER_MUX + 4;
             PCnext <= MUX_PC;
         end
 

@@ -25,19 +25,26 @@ always #5 clk = ~clk;
         clk = 0;
         wrt_en = 1;
         reset = 0;
+        PCbranch = 32'h0000_11FF;
+        branch_hit = 0;
+        instr_from_mem = 128'hFFFF_AAAA_CCCC_EEEE_0000_FFFF_FFFF_1234;
+        mem_data_rdy=1;
+        data_filled_ack=0;
 
         $dumpfile("fetch_stage.vcd");
         $dumpvars(0, fetch_stage_tb);
 
+        #40;
         PCbranch = 32'h0000_0010;
         branch_hit = 0;
         instr_from_mem = 128'h0000_0000_0000_0000_0000_0000_0000_0000;
         mem_data_rdy = 0;
         data_filled_ack = 0;
-
-        $finish;
+        #40;
 
         $display("Test OK!");
+        $finish;
+
     end
 
 endmodule
