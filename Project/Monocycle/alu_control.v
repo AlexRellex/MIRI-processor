@@ -7,15 +7,15 @@ module alu_control (
 
     always @(alu_function) begin
         
-        if (alu_op == 2'b10) begin
+        if (alu_op == 2'b00) begin
             case (alu_function)
                 6'b000000: alu_control = 4'b0000; //ADD
                 6'b000001: alu_control = 4'b0001; //SUB
             endcase
         end
 
+        // Probably a M-instruction
         else begin
-            $display("ALU Control: Alu function not found");
             alu_control = 4'b0000; //ADD
         end
 
