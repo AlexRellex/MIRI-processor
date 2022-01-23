@@ -74,7 +74,8 @@ module dCache (
         if (waiting_data) begin        
             $display("Waiting data,");
             // Fill dCache with data from Memory
-            line = $urandom%10;
+            line = $urandom%`DCACHE_NLINES; // Random selection of the cache line to evict.
+            $display("Line to replace:", line);
             if (dirty_line[line]) begin
                 $display("line dirty. Send to memory");
                 data = cache_data[line];
@@ -88,6 +89,7 @@ module dCache (
                     waiting_data = 1'b0;
                     req_dCache_mem = 1'b0;     
                 end
+            end
         end
 
         // If we are not requesting data to memory

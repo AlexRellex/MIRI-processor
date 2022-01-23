@@ -14,6 +14,7 @@ module dCache_tb;
     wire cache_hit;
     wire req_dCache_mem;
     wire [(`MEM_ADDRESS_LEN-1):0] req_dCache_mem_addr;
+    wire evicted_data;
 
     // Internal registers
    	reg [(`DCACHE_LINE_WIDTH-1):0] cache_data [(`DCACHE_NLINES-1):0];   // iCache memory
@@ -25,7 +26,7 @@ module dCache_tb;
     wire [(`DCACHE_INDEX_WIDTH-1):0] addr_index;    // iCache line (direct mapped)
     wire [(`DCACHE_BYTEINLINE_WIDTH-1):0] addr_byte; // Locate the byte-in-line
 
-    dCache uut(clk, reset, wrt_en, addr, data_to_fill, mem_data_rdy, data, cache_hit, req_dCache_mem, req_dCache_mem_addr);
+    dCache uut(clk, reset, wrt_en, addr, data_to_fill, mem_data_rdy, data, cache_hit, req_dCache_mem, req_dCache_mem_addr, evicted_data);
 
 always #5 clk = ~clk;
 
