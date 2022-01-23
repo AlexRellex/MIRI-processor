@@ -9,6 +9,7 @@ module alu_stage(
     input [31:0] lower_half_instruction,
     input [31:0] PCNEXT_init,
     input [1:0] ALU_OP,
+    input is_immediate,
 
     // OUTPUT
     output reg [31:0] regDdata, regBdata,
@@ -26,6 +27,9 @@ module alu_stage(
     wire [31:0] regA_data;
     wire [31:0] regB_data;
     wire [31:0] regD_data;
+    wire [31:0] immediate;
+    wire [31:0] mux_Imm_regB_out;
+    assign immediate = lower_half_instruction;
     assign FUNCTION_TO_ALU = lower_half_instruction [5:0];
     assign PC_NEXT_INTERNAL = PCNEXT_init + (lower_half_instruction << 2);
     assign regA_data = regAdata_init;
@@ -40,12 +44,19 @@ module alu_stage(
 
     alu alu(
         .regA(regA_data),
-        .regB(regB_data),
+        .regB(mux_Imm_regB_out),
         .op(alu_control_int),
         .regD(regD_data),
         .zero(zero_internal)
     );
 
+
+    mux2Data mux_Imm_RegB(
+        .select(is_immediate),
+        .a(regBdata_init),
+        .b(immediate),
+        .y(mux_Imm_regB_out)
+    );
     
     always @ (posedge clk) begin
         if (reset) begin

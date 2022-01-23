@@ -12,6 +12,7 @@ module alu_stage_tb;
     reg [31:0] lower_half_instruction;
     reg [31:0] PCNEXT_init;
     reg [1:0] ALU_OP;
+    reg is_immediate;
 
     // OUTPUT
     wire [31:0] regDdata;
@@ -21,7 +22,7 @@ module alu_stage_tb;
     wire [4:0] regD;
 
     // Internal wires
-   wire zero_internal;
+    wire zero_internal;
     wire [3:0] alu_control_int;
     wire [31:0] PC_NEXT_INTERNAL;
     wire [5:0] FUNCTION_TO_ALU;
@@ -34,7 +35,7 @@ module alu_stage_tb;
     assign regB_data = regBdata_init;
 
     alu_stage uut(clk, reset, regAdata_init,regBdata_init, lower_half_instruction, PCNEXT_init,
-     ALU_OP, regDdata, regBdata, zero, PCNEXT, regD);
+     ALU_OP, is_immediate, regDdata, regBdata, zero, PCNEXT, regD);
 
     integer i;
 
@@ -43,6 +44,31 @@ module alu_stage_tb;
     initial begin
         $dumpfile("alu_stage_tb.vcd");
         $dumpvars(0, alu_stage_tb);
+        clk=0;
+        reset=0;
+        lower_half_instruction = 32'h0000_0001;
+        is_immediate=0;
+
+        ALU_OP = 2'b10;
+        
+        regAdata_init = 32'h0000_0001;
+        regBdata_init = 32'h0000_0001;
+        #20;
+
+        //ADD
+        #20;
+
+        //SUB
+        lower_half_instruction = 32'h0000_0000;
+        #20;
+
+        regAdata_init = 32'h0000_0011;
+        regBdata_init = 32'h0000_0021;
+        //ADD
+        lower_half_instruction = 32'h0001_0001;
+        #20;
+
+        is_immediate=1;
         #20;
         $finish();
     end
