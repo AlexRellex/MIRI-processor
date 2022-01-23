@@ -37,6 +37,11 @@
 `define PHY_ADDR_WIDTH      20
 `define PAGE_SIZE           12  // 4 KB
 `define PHY_PAGE_NUM_WIDTH  `PHY_ADDR_WIDTH - `PAGE_SIZE
+`define DCACHE_NLINES 4
+`define DCACHE_LINE_WIDTH 128
+`define DCACHE_BYTEINLINE_WIDTH 2
+`define DCACHE_INDEX_WIDTH 2
+`define DCACHE_TAG_WIDTH 28
 
 // Main mamory
 `define MEM_DATA_WIDTH  128
@@ -48,10 +53,10 @@
 
 /////// Cache
 // Store Buffer
-`define ADDR_WIDTH 32
-`define DATA_WIDTH 32
+`define SB_ADDR_WIDTH 32
+`define SB_DATA_WIDTH 32
 `define SB_NLINES   4
-`define SB_WIDTH  `ADDR_WIDTH + `DATA_WIDTH
+`define SB_WIDTH  `SB_ADDR_WIDTH + `SB_DATA_WIDTH
 
 
 `endif
