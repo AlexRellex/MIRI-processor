@@ -10,8 +10,8 @@
 `define PHY_ADDR_WIDTH  20
 `define PAGE_SIZE_BITS  12 // 4 KB
 `define CODE_START 4096
-`define OS_START   8192
-
+`define OS_START 8192
+`define MEM_LINE_WIDTH 128
 
 /////// Fetch
 `define ICACHE_NLINES 4

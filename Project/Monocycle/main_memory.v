@@ -13,7 +13,7 @@ module main_memory(
 
 
     // Internal registers
-    reg [31:0] memory [(`MEM_DATA_SIZE)-1:0]; // 2^20
+    reg [(`VIRT_ADDR_WIDTH-1):0] memory [(`MEM_DATA_SIZE)-1:0]; // 2^20
     integer i;
 
     initial begin

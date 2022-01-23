@@ -1,3 +1,5 @@
+`include "header.vh"
+
 module control (
     
     // SYSTEM

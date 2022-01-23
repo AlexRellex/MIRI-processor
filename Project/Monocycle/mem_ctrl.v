@@ -9,8 +9,8 @@ module mem_ctrl(
     input [(`MEM_ADDRESS_LEN-1):0] addr_dcache,
     input [(`MEM_ADDRESS_LEN-1):0] write_addr,
     input [(`MEM_ADDRESS_LEN-1):0] addr_icache,
-    input [127:0] data_from_cache,
-    output reg [127:0] data_to_cache,
+    input [(`MEM_LINE_WIDTH-1):0] data_from_cache,
+    output reg [(`MEM_LINE_WIDTH-1):0] data_to_cache,
     output reg read_ready_for_icache,
     output reg read_ready_for_dcache,
     output reg written_data_ack
@@ -20,8 +20,8 @@ module mem_ctrl(
     reg arbiter;
     reg was_write;
 
-    reg [127:0] fake_data_buffer; // Buffer to fake data delay
-    reg [127:0] data_to_write;
+    reg [(`MEM_LINE_WIDTH-1):0] fake_data_buffer; // Buffer to fake data delay
+    reg [(`MEM_LINE_WIDTH-1):0] data_to_write;
 
     main_memory ram(
         //Inputs
