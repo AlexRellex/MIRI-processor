@@ -22,24 +22,32 @@ module fetch_stage_tb;
 always #5 clk = ~clk;
 
     initial begin
+
+        $dumpfile("fetch_stage.vcd");
+        $dumpvars(0, fetch_stage_tb);
+
         clk = 0;
         wrt_en = 1;
         reset = 0;
         PCbranch = 32'h0000_11FF;
         branch_hit = 0;
-        instr_from_mem = 128'hFFFF_AAAA_CCCC_EEEE_0000_FFFF_FFFF_1234;
+        instr_from_mem = {32'b0000000_00011_00001_00010_0000000000, 
+            32'b0000000_00011_00001_00010_0000000000, 
+            32'b0000000_00011_00001_00010_0000000000, 
+            32'b0000000_00011_00001_00010_0000000000};
         mem_data_rdy=1;
         data_filled_ack=0;
 
-        $dumpfile("fetch_stage.vcd");
-        $dumpvars(0, fetch_stage_tb);
-
         #40;
+
         PCbranch = 32'h0000_0010;
         branch_hit = 0;
-        instr_from_mem = 128'h0000_0000_0000_0000_0000_0000_0000_0000;
-        mem_data_rdy = 0;
-        data_filled_ack = 0;
+        instr_from_mem = {32'b0000000_00011_00001_00010_0000000000, 
+            32'b0000000_00011_00001_00010_0000000000, 
+            32'b0000000_00011_00001_00010_0000000000, 
+            32'b0000000_00011_00001_00010_0000000000};       
+        mem_data_rdy = 1;
+        data_filled_ack = 1;
         #40;
 
         $display("Test OK!");
