@@ -1,7 +1,7 @@
 //`include "header.vh"
 
 module iCache (
-        // SYSTEM
+    // SYSTEM
     input clk,
     input reset,
     input wrt_en,
@@ -48,9 +48,10 @@ module iCache (
     p_end = p_end - `ICACHE_BYTEINLINE_WIDTH; 
     assign addr_byte = addr[p_strt:p_end];  // 3:0
     */
-    assign addr_tag = addr[31:6];
-    assign addr_index = addr[5:4];
-    assign addr_byte = addr[3:0];
+
+    assign addr_tag = addr[31:4];
+    assign addr_index = addr[3:2];
+    assign addr_byte = addr[1:0];
 
     integer line;
     initial begin
@@ -59,14 +60,10 @@ module iCache (
         for (line=0; line<`ICACHE_NLINES; line=line+1) begin
             cache_val_bit[line] = 1'b0;            
         end
-
-        cache_data[1] = 128'hAAAAAAAA_BBBBBBBB_CCCCCCCC_DDDDDDDD;
-        cache_tag[1] = 'b00_00000000_00000000_00000001;
-        cache_val_bit[1] = 1'b1;
         
 	end
 
-    always @(negedge clk ) begin // Using posedge for the first part of the stage and negedge for the second
+    always @(negedge clk ) begin
 
         cache_hit = 0;
         // Flush iCache
@@ -89,16 +86,18 @@ module iCache (
         end
         
         // If data has been filled succesfully turn off the request
-        if (pending_data == 1'b1 && data_filled_ack == 1'b1) begin
+        if (pending_data && data_filled_ack) begin
             pending_data = 1'b0;
         end
 
         // If we are not requesting data to memory
         if (!pending_data && wrt_en) begin
+            $display("data in iCache");
             // Do we have a TAG hit?
             if (addr_tag == cache_tag[line]) begin
                 // Is the chache line valid?
                 if (cache_val_bit[line] == 1'b1) begin
+                    $display("iCache hit");
                     // hit and valid. Read the instruction
                     cache_hit=1'b1;
                     case(addr_byte)

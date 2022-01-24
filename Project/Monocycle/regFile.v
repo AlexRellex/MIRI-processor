@@ -33,6 +33,9 @@ module regFile(
         for (i=0; i<`REG_FILE_NREG; i=i+1) begin
              regFile[i] = 32'h0000_0000;   
         end
+        regFile[1] = 32'h0000_0002;
+        regFile[2] = 32'h0000_0002;
+        regFile[3] = 32'h0000_00F0;
 	end
 
 
